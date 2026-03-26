@@ -1,4 +1,8 @@
 import { Schema, model } from 'mongoose';
+import './locationType.js';
+import './region.js';
+import './user.js';
+import './feedback.js';
 
 const locationSchema = new Schema(
   {
@@ -9,15 +13,15 @@ const locationSchema = new Schema(
       ref: 'LocationType',
       required: true,
     },
-    region: { type: Schema.Types.ObjectId, ref: 'Region', requred: true },
+    region: { type: Schema.Types.ObjectId, ref: 'Region', required: true },
     rate: { type: Number, default: 0, min: 0, max: 5 },
     description: { type: String, required: true, trim: true },
-    owner: { type: Schema.Types.ObjectId, ref: 'User', required: true },
-    feedbacks: { type: Schema.Types.ObjectId, ref: 'Feedback', required: true },
+    owner: { type: Schema.Types.ObjectId, ref: 'User' },
+    feedbacks: [{ type: Schema.Types.ObjectId, ref: 'Feedback' }],
   },
   {
     timestamps: true,
-    versionKey: true,
+    versionKey: '_version',
   }
 );
 
