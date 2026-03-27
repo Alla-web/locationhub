@@ -12,7 +12,7 @@ import { errorHandler } from './middleware/errorHandler.js';
 import { notFoundHandler } from './middleware/notFoundHandler.js';
 import routes from './routes/routes.js';
 import authRoutes from './routes/authRoutes.js';
-import feedbacksRouter from './routes/feedbacks.js';
+import feedbacksRouter from './routes/feedbacksRoutes.js';
 
 const app = express();
 const PORT = process.env.PORT ?? 3000;
