@@ -2,7 +2,7 @@ import { Schema, model } from 'mongoose';
 import './locationType.js';
 import './region.js';
 import './user.js';
-// import './feedback.js';
+import './feedback.js';
 
 const locationSchema = new Schema(
   {
