@@ -16,8 +16,8 @@ const locationSchema = new Schema(
     region: { type: Schema.Types.ObjectId, ref: 'Region', required: true },
     rate: { type: Number, default: 0, min: 0, max: 5 },
     description: { type: String, required: true, trim: true },
-    owner: { type: Schema.Types.ObjectId, ref: 'User' },
-    feedbacks: [{ type: Schema.Types.ObjectId, ref: 'Feedback' }],
+    ownerId: { type: Schema.Types.ObjectId, ref: 'User' },
+    feedbacksId: [{ type: Schema.Types.ObjectId, ref: 'Feedback' }],
   },
   {
     timestamps: true,
@@ -33,7 +33,7 @@ locationSchema.index(
   {
     name: 'LocationTextIndex',
     weights: { name: 10, description: 5 },
-    default_language: 'endlish',
+    default_language: 'english',
   }
 );
 
