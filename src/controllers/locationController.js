@@ -7,8 +7,7 @@ export const getAllLocations = async (req, res) => {
 
   const skip = (Number(page) - 1) * Number(perPage);
 
-  //                             { owner: req.user._id }
-  const noteQuery = Location.find();
+  const noteQuery = Location.find({ owner: req.user._id });
 
   if (search) noteQuery.where({ $text: { $search: search } });
   if (region) noteQuery.where('region').equals(region);
@@ -36,8 +35,10 @@ export const getAllLocations = async (req, res) => {
 export const getLocatoinById = async (req, res) => {
   const locationId = req.params.locationId;
 
-  //                                                       , userId: req.user._id
-  const location = await Location.findOne({ _id: locationId })
+  const location = await Location.findOne({
+    _id: locationId,
+    userId: req.user._id,
+  })
     .populate('region')
     .populate('locationType')
     .populate('owner')
@@ -50,7 +51,24 @@ export const getLocatoinById = async (req, res) => {
 };
 
 export const createLocation = async (req, res) => {
-  //                                                    , userId: req.user._id
-  const newLocation = await Location.create({ ...req.body });
+  const newLocation = await Location.create({
+    ...req.body,
+    userId: req.user._id,
+  });
   res.status(201).json(newLocation);
+};
+
+export const updateLocation = async (req, res) => {
+  const locationId = req.params.locationId;
+
+  const updatedLocation = await Location.findOneAndUpdate(
+    { _id: locationId, userId: req.user._id },
+    req.body,
+    { returnDocument: 'after' }
+  );
+
+  if (!updatedLocation)
+    throw createHttpError(404, `Location with ID ${locationId} not found`);
+
+  res.status(200).json(updatedLocation);
 };

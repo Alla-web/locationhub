@@ -5,11 +5,13 @@ import {
   createLocationSchema,
   getAllLocationsSchema,
   getlocationByIdSchema,
+  updateLocationSchema,
 } from '../validations/locationValidation.js';
 import {
   createLocation,
   getAllLocations,
   getLocatoinById,
+  updateLocation,
 } from '../controllers/locationController.js';
 
 const locationRoutes = Router();
@@ -277,6 +279,116 @@ locationRoutes.post(
   '/locations',
   celebrate(createLocationSchema),
   createLocation
+);
+
+/**
+ * @openapi
+ * /locations/{locationId}:
+ *   patch:
+ *     tags:
+ *       - Locations
+ *     summary: Оновити локацію
+ *     parameters:
+ *       - in: path
+ *         name: locationId
+ *         required: true
+ *         schema:
+ *           type: string
+ *           example: "64f123abc123abc123abc123"
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               image:
+ *                 type: string
+ *                 example: "https://example.com/location.jpg"
+ *               name:
+ *                 type: string
+ *                 minLength: 2
+ *                 example: "Вічний вогонь"
+ *               locationType:
+ *                 type: string
+ *                 example: "64f123abc123abc123abc201"
+ *               region:
+ *                 type: string
+ *                 example: "64f123abc123abc123abc202"
+ *               description:
+ *                 type: string
+ *                 example: "Оновлений опис локації"
+ *           examples:
+ *             example1:
+ *               summary: Example request
+ *               value:
+ *                 image: "https://example.com/location.jpg"
+ *                 name: "Оновлена назва"
+ *                 description: "Оновлений опис локації"
+ *                 locationType: "64f123abc123abc123abc201"
+ *                 region: "64f123abc123abc123abc202"
+ *     responses:
+ *       200:
+ *         description: Локацію успішно оновлено
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Location'
+ *             examples:
+ *               example1:
+ *                 summary: Example response
+ *                 value:
+ *                   _id: "64f123abc123abc123abc123"
+ *                   image: "https://example.com/location.jpg"
+ *                   name: "Оновлена назва"
+ *                   locationType:
+ *                     _id: "64f123abc123abc123abc201"
+ *                     name: "Історичне місце"
+ *                   region:
+ *                     _id: "64f123abc123abc123abc202"
+ *                     name: "Харківська область"
+ *                   rate: 4.5
+ *                   description: "Оновлений опис локації"
+ *                   owner:
+ *                     _id: "64f123abc123abc123abc203"
+ *                     name: "Anna"
+ *                     email: "anna@example.com"
+ *                   feedbacks: []
+ *                   createdAt: "2025-03-01T10:00:00.000Z"
+ *                   updatedAt: "2025-03-02T10:00:00.000Z"
+ *       400:
+ *         description: Помилка валідації
+ *         content:
+ *           application/json:
+ *             examples:
+ *               invalidId:
+ *                 summary: Невалідний ID
+ *                 value:
+ *                   message: "Location ID must be valid mongo ID"
+ *               validationError:
+ *                 summary: Помилка полів
+ *                 value:
+ *                   message: "Validation error"
+ *                   details:
+ *                     - "Field name is required"
+ *                     - "LocationType must be a valid ObjectId"
+ *       404:
+ *         description: Локацію не знайдено
+ *         content:
+ *           application/json:
+ *             example:
+ *               message: "Location not found"
+ *       401:
+ *         description: Користувач не авторизований
+ *         content:
+ *           application/json:
+ *             example:
+ *               message: "Unauthorized"
+ */
+locationRoutes.patch(
+  '/locations/:locationId',
+  celebrate(updateLocationSchema),
+  updateLocation
 );
 
 export default locationRoutes;

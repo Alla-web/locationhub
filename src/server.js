@@ -30,7 +30,9 @@ app.use(
   swaggerUi.serve,
   swaggerUi.setup(swaggerSpec, {
     swaggerOptions: {
-      docExpansion: 'full',
+      docExpansion: 'list',
+      explorer: true,
+      displayRequestDuration: true,
     },
   })
 );
