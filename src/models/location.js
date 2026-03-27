@@ -8,12 +8,12 @@ const locationSchema = new Schema(
   {
     image: { type: String, required: true, trim: true },
     name: { type: String, required: true, trim: true },
-    locationType: {
+    locationTypeId: {
       type: Schema.Types.ObjectId,
       ref: 'LocationType',
       required: true,
     },
-    region: { type: Schema.Types.ObjectId, ref: 'Region', required: true },
+    regionId: { type: Schema.Types.ObjectId, ref: 'Region', required: true },
     rate: { type: Number, default: 0, min: 0, max: 5 },
     description: { type: String, required: true, trim: true },
     ownerId: { type: Schema.Types.ObjectId, ref: 'User' },
