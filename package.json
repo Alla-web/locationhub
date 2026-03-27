@@ -6,7 +6,8 @@
   "type": "module",
   "scripts": {
     "dev": "nodemon src/server.js",
-    "start": "node src/server.js"
+    "start": "node src/server.js",
+    "format": "prettier --write ."
   },
   "keywords": [],
   "author": "ALLA_NAZARENKO <umnyj.start@gmail.com>",
@@ -15,7 +16,8 @@
     "@eslint/js": "^10.0.1",
     "eslint": "^10.0.0",
     "globals": "^17.3.0",
-    "nodemon": "^3.1.14"
+    "nodemon": "^3.1.11",
+    "prettier": "^3.8.1"
   },
   "dependencies": {
     "bcrypt": "^6.0.0",

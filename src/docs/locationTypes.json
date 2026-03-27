@@ -1,0 +1,22 @@
+[
+  { "name": "Пляж", "slug": "beach" },
+  { "name": "Гори", "slug": "mountains" },
+  { "name": "Ліс", "slug": "forest" },
+  { "name": "Озеро", "slug": "lake" },
+  { "name": "Річка", "slug": "river" },
+  { "name": "Водоспад", "slug": "waterfall" },
+  { "name": "Парк", "slug": "park" },
+  { "name": "Національний парк", "slug": "national-park" },
+  { "name": "Заповідник", "slug": "reserve" },
+  { "name": "Каньйон", "slug": "canyon" },
+  { "name": "Острів", "slug": "island" },
+  { "name": "Печера", "slug": "cave" },
+  { "name": "Скелі", "slug": "cliffs" },
+  { "name": "Термальні джерела", "slug": "thermal-springs" },
+  { "name": "Курорт", "slug": "resort" },
+  { "name": "Еко-локація", "slug": "eco-location" },
+  { "name": "Кемпінг", "slug": "camping" },
+  { "name": "Історичне місце", "slug": "historical-place" },
+  { "name": "Оглядовий майданчик", "slug": "viewpoint" },
+  { "name": "Долина", "slug": "valley" }
+]
