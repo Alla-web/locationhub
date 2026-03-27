@@ -37,8 +37,8 @@ app.use(
   })
 );
 
-app.use(routes);
-app.use(authRoutes);
+app.use('/api', routes);
+app.use('/api', authRoutes);
 app.use('/api/feedbacks', feedbacksRouter);
 app.use(notFoundHandler);
 app.use(errors());
