@@ -7,6 +7,7 @@ import {
   getlocationByIdSchema,
   updateLocationSchema,
 } from '../validations/locationValidation.js';
+import { authenticate } from '../middleware/authenticate.js';
 import {
   createLocation,
   getAllLocations,
@@ -277,6 +278,7 @@ locationRoutes.get(
  */
 locationRoutes.post(
   '/locations',
+  authenticate,
   celebrate(createLocationSchema),
   createLocation
 );
@@ -387,6 +389,7 @@ locationRoutes.post(
  */
 locationRoutes.patch(
   '/locations/:locationId',
+  authenticate,
   celebrate(updateLocationSchema),
   updateLocation
 );
