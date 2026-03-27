@@ -11,7 +11,6 @@ import { logger } from './middleware/logger.js';
 import { errorHandler } from './middleware/errorHandler.js';
 import { notFoundHandler } from './middleware/notFoundHandler.js';
 import routes from './routes/routes.js';
-import authRoutes from './routes/authRoutes.js';
 
 const app = express();
 const PORT = process.env.PORT ?? 3000;
@@ -38,8 +37,7 @@ app.use(
   })
 );
 
-app.use(routes);
-app.use(authRoutes);
+app.use('/api', routes);
 app.use(notFoundHandler);
 app.use(errors());
 app.use(errorHandler);
