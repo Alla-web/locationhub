@@ -7,7 +7,7 @@ export const getAllLocations = async (req, res) => {
 
   const skip = (Number(page) - 1) * Number(perPage);
 
-  const noteQuery = Location.find({ owner: req.user._id });
+  const noteQuery = Location.find({ ownerId: req.user._id });
 
   if (search) noteQuery.where({ $text: { $search: search } });
   if (region) noteQuery.where('region').equals(region);
@@ -21,8 +21,8 @@ export const getAllLocations = async (req, res) => {
       // .populate('locationType', 'name') - тобто можна окремі поля витягати
       .populate('locationType')
       .populate('region')
-      .populate('owner')
-      .populate('feedbacks'),
+      .populate('ownerId')
+      .populate('feedbacksId'),
   ]);
 
   const totalPages = Math.ceil(totalLocations / perPage);
@@ -41,8 +41,8 @@ export const getLocatoinById = async (req, res) => {
   })
     .populate('region')
     .populate('locationType')
-    .populate('owner')
-    .populate('feedbacks');
+    .populate('ownerId')
+    .populate('feedbacksId');
 
   if (!location)
     throw createHttpError(404, `Location with ID: ${locationId} not found`);
