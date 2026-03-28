@@ -6,8 +6,8 @@ export const getAllLocationsSchema = {
     page: Joi.number().integer().min(1).default(1),
     perPage: Joi.number().integer().min(9).max(27),
     search: Joi.string().trim().allow(''),
-    region: Joi.string().trim(),
-    locationType: Joi.string().trim(),
+    regionId: Joi.string().trim(),
+    locationTypeId: Joi.string().trim(),
   }),
 };
 
@@ -37,12 +37,12 @@ export const createLocationSchema = {
       'string.max': 'Field name should be less than 100 characters',
       'any.required': 'Field name is required',
     }),
-    locationType: Joi.string().hex().length(24).required().messages({
+    locationTypeId: Joi.string().hex().length(24).required().messages({
       'string.hex': 'LocationType must be a valid ObjectId',
       'string.length': 'LocationType must be 24 characters long',
       'any.required': 'LocationType is required',
     }),
-    region: Joi.string().hex().length(24).required().messages({
+    regionId: Joi.string().hex().length(24).required().messages({
       'string.hex': 'Region must be a valid ObjectId',
       'string.length': 'Region must be 24 characters long',
       'any.required': 'Region is required',
@@ -72,11 +72,11 @@ export const updateLocationSchema = {
       'string.min': 'Field name should have at least 2 characters',
       'string.max': 'Field name should be less than 100 characters',
     }),
-    locationType: Joi.string().hex().length(24).messages({
+    locationTypeId: Joi.string().hex().length(24).messages({
       'string.hex': 'LocationType must be a valid ObjectId',
       'string.length': 'LocationType must be 24 characters long',
     }),
-    region: Joi.string().hex().length(24).messages({
+    regionId: Joi.string().hex().length(24).messages({
       'string.hex': 'Region must be a valid ObjectId',
       'string.length': 'Region must be 24 characters long',
     }),
