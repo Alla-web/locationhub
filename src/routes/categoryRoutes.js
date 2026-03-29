@@ -1,8 +1,13 @@
 import { Router } from 'express';
+import { celebrate } from 'celebrate';
 import {
   getCategoriesWithRegions,
   getCategoriesWithLocationTypes,
 } from '../controllers/categoryController.js';
+import {
+  getCategoriesWithRegionsSchema,
+  getCategoriesWithLocationTypesSchema,
+} from '../validations/categoryValidation.js';
 
 const categoryRoutes = Router();
 
@@ -33,7 +38,11 @@ const categoryRoutes = Router();
  *                     type: string
  *                     example: "kharkivska"
  */
-categoryRoutes.get('/categories/regions', getCategoriesWithRegions);
+categoryRoutes.get(
+  '/categories/regions',
+  celebrate(getCategoriesWithRegionsSchema),
+  getCategoriesWithRegions
+);
 
 /**
  * @openapi
@@ -62,6 +71,10 @@ categoryRoutes.get('/categories/regions', getCategoriesWithRegions);
  *                     type: string
  *                     example: "more"
  */
-categoryRoutes.get('/categories/location-types', getCategoriesWithLocationTypes);
+categoryRoutes.get(
+  '/categories/location-types',
+  celebrate(getCategoriesWithLocationTypesSchema),
+  getCategoriesWithLocationTypes
+);
 
 export default categoryRoutes;
