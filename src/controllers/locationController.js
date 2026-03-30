@@ -87,8 +87,22 @@ export const updateLocation = async (req, res) => {
     .populate('ownerId')
     .populate('feedbacksId');
 
-  if (!updatedLocation)
+  if (!location) {
     throw createHttpError(404, `Location with ID ${locationId} not found`);
+  }
+
+  if (location.ownerId?.toString() !== req.user._id.toString()) {
+    throw createHttpError(403, 'Forbidden');
+  }
+
+  const updatedLocation = await Location.findByIdAndUpdate(locationId, req.body, {
+    returnDocument: 'after',
+    runValidators: true,
+  })
+    .populate('locationTypeId')
+    .populate('regionId')
+    .populate('ownerId')
+    .populate('feedbacksId');
 
   res.status(200).json(updatedLocation);
 };

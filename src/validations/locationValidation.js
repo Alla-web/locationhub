@@ -13,7 +13,7 @@ export const getAllLocationsSchema = {
 
 const locationIdValidator = (value, helpers) => {
   return !isValidObjectId(value)
-    ? helpers.console.error('locationId.invalid')
+    ? helpers.error('locationId.invalid')
     : value;
 };
 
