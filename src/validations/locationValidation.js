@@ -1,35 +1,33 @@
 import { Joi, Segments } from 'celebrate';
 import { isValidObjectId } from 'mongoose';
 
+const locationIdValidator = (value, helpers) => {
+  return !isValidObjectId(value)
+    ? helpers.error('locationId.invalid')
+    : value;
+};
+
 export const getAllLocationsSchema = {
   [Segments.QUERY]: Joi.object({
     page: Joi.number().integer().min(1).default(1),
-    perPage: Joi.number().integer().min(9).max(27),
+    perPage: Joi.number().integer().min(9).max(27).default(9),
     search: Joi.string().trim().allow(''),
     regionId: Joi.string().trim(),
     locationTypeId: Joi.string().trim(),
   }),
 };
 
-const locationIdValidator = (value, helpers) => {
-  return !isValidObjectId(value)
-    ? helpers.console.error('locationId.invalid')
-    : value;
-};
-
 export const getlocationByIdSchema = {
   [Segments.PARAMS]: Joi.object({
     locationId: Joi.string().required().custom(locationIdValidator).messages({
-      'locationId.invalid': `Location ID - {#value} - must be valid mongo ID (24 characters in hex-format)`,
+      'locationId.invalid':
+        'Location ID - {#value} - must be valid mongo ID (24 characters in hex-format)',
     }),
   }),
 };
 
 export const createLocationSchema = {
   [Segments.BODY]: Joi.object({
-    image: Joi.string().uri().optional().messages({
-      'string.uri': 'Image must be a valid URL',
-    }),
     name: Joi.string().min(2).max(100).required().trim().messages({
       'string.base': 'Field name must be a string',
       'string.empty': 'Field name cannot be empty',
@@ -49,23 +47,22 @@ export const createLocationSchema = {
     }),
     description: Joi.string().min(10).max(1000).required().trim().messages({
       'string.empty': 'Field description cannot be empty',
-      'string.min': 'Feild description must be at least 10 characters',
-      'string.max': 'Field description must be less then 1000 characters',
-      'any.requirred': 'Field description is required',
+      'string.min': 'Field description must be at least 10 characters',
+      'string.max': 'Field description must be less than 1000 characters',
+      'any.required': 'Field description is required',
     }),
+    rate: Joi.number().min(0).max(5).optional(),
   }).options({ allowUnknown: false }),
 };
 
 export const updateLocationSchema = {
   [Segments.PARAMS]: Joi.object({
     locationId: Joi.string().required().custom(locationIdValidator).messages({
-      'noteId.invalid': `Location ID - {#value} - must be valid mongo ID (24 characters in hex-format)`,
+      'locationId.invalid':
+        'Location ID - {#value} - must be valid mongo ID (24 characters in hex-format)',
     }),
   }),
   [Segments.BODY]: Joi.object({
-    image: Joi.string().uri().optional().messages({
-      'string.uri': 'Image must be a valid URL',
-    }),
     name: Joi.string().min(2).max(100).trim().messages({
       'string.base': 'Field name must be a string',
       'string.empty': 'Field name cannot be empty',
@@ -82,8 +79,11 @@ export const updateLocationSchema = {
     }),
     description: Joi.string().min(10).max(1000).trim().messages({
       'string.empty': 'Field description cannot be empty',
-      'string.min': 'Feild description must be at least 10 characters',
-      'string.max': 'Field description must be less then 1000 characters',
+      'string.min': 'Field description must be at least 10 characters',
+      'string.max': 'Field description must be less than 1000 characters',
     }),
-  }).options({ allowUnknown: false }),
+    rate: Joi.number().min(0).max(5).optional(),
+  })
+    .min(1)
+    .options({ allowUnknown: false }),
 };

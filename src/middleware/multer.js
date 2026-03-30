@@ -2,14 +2,14 @@ import multer from 'multer';
 
 export const upload = multer({
   storage: multer.memoryStorage(),
-  limits: { fileSize: 2 * 1024 * 1024 },
+  limits: { fileSize: 10 * 1024 * 1024 },
   fileFilter: (req, file, cb) => {
     if (file.mimetype.startsWith('image/')) {
       cb(null, true);
     } else {
       cb(
         new Error(
-          'Invalide file type. Only JPEG, JPG, PNG, GIF and WEBp are allowed'
+          'Invalid file type. Only JPEG, JPG, PNG, GIF and WEBP are allowed'
         ),
         false
       );

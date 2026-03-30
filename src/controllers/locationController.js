@@ -1,74 +1,125 @@
 import createHttpError from 'http-errors';
-
 import { Location } from '../models/location.js';
+import { uploadImageToCloudinary } from '../services/uploadImageToCloudinary.js';
 
 export const getAllLocations = async (req, res) => {
-  const { page = 1, perPage = 9, region, locationType, search } = req.query;
+  const {
+    page = 1,
+    perPage = 9,
+    regionId,
+    locationTypeId,
+    search,
+  } = req.query;
 
-  const skip = (Number(page) - 1) * Number(perPage);
+  const pageNumber = Number(page);
+  const perPageNumber = Number(perPage);
+  const skip = (pageNumber - 1) * perPageNumber;
 
-  const noteQuery = Location.find({ ownerId: req.user._id });
+  const locationQuery = Location.find({ ownerId: req.user._id });
 
-  if (search) noteQuery.where({ $text: { $search: search } });
-  if (region) noteQuery.where('region').equals(region);
-  if (locationType) noteQuery.where('locationType').equals(locationType);
+  if (search) {
+    locationQuery.where({ $text: { $search: search } });
+  }
+
+  if (regionId) {
+    locationQuery.where('regionId').equals(regionId);
+  }
+
+  if (locationTypeId) {
+    locationQuery.where('locationTypeId').equals(locationTypeId);
+  }
 
   const [totalLocations, locations] = await Promise.all([
-    noteQuery.clone().countDocuments(),
-    noteQuery
+    locationQuery.clone().countDocuments(),
+    locationQuery
       .skip(skip)
-      .limit(perPage)
-      // .populate('locationType', 'name') - тобто можна окремі поля витягати
-      .populate('locationType')
-      .populate('region')
+      .limit(perPageNumber)
+      .populate('locationTypeId')
+      .populate('regionId')
       .populate('ownerId')
       .populate('feedbacksId'),
   ]);
 
-  const totalPages = Math.ceil(totalLocations / perPage);
+  const totalPages = Math.ceil(totalLocations / perPageNumber);
 
-  res
-    .status(200)
-    .json({ page, perPage, totalPages, totalLocations, locations });
+  res.status(200).json({
+    page: pageNumber,
+    perPage: perPageNumber,
+    totalPages,
+    totalLocations,
+    locations,
+  });
 };
 
 export const getLocatoinById = async (req, res) => {
-  const locationId = req.params.locationId;
+  const { locationId } = req.params;
 
   const location = await Location.findOne({
     _id: locationId,
-    userId: req.user._id,
+    ownerId: req.user._id,
   })
-    .populate('region')
-    .populate('locationType')
+    .populate('regionId')
+    .populate('locationTypeId')
     .populate('ownerId')
     .populate('feedbacksId');
 
-  if (!location)
+  if (!location) {
     throw createHttpError(404, `Location with ID: ${locationId} not found`);
+  }
 
   res.status(200).json(location);
 };
 
 export const createLocation = async (req, res) => {
+  let imageUrl = req.body.image;
+
+  if (req.file) {
+    const uploadedImage = await uploadImageToCloudinary(req.file.buffer);
+    imageUrl = uploadedImage.secure_url;
+  }
+
+  if (!imageUrl) {
+    throw createHttpError(400, 'Image is required');
+  }
+
   const newLocation = await Location.create({
     ...req.body,
-    userId: req.user._id,
+    image: imageUrl,
+    ownerId: req.user._id,
   });
-  res.status(201).json(newLocation);
+
+  const populatedLocation = await Location.findById(newLocation._id)
+    .populate('regionId')
+    .populate('locationTypeId')
+    .populate('ownerId')
+    .populate('feedbacksId');
+
+  res.status(201).json(populatedLocation);
 };
 
 export const updateLocation = async (req, res) => {
-  const locationId = req.params.locationId;
+  const { locationId } = req.params;
+
+  const updatePayload = { ...req.body };
+
+  if (req.file) {
+    const uploadedImage = await uploadImageToCloudinary(req.file.buffer);
+    updatePayload.image = uploadedImage.secure_url;
+  }
 
   const updatedLocation = await Location.findOneAndUpdate(
-    { _id: locationId, userId: req.user._id },
-    req.body,
+    { _id: locationId, ownerId: req.user._id },
+    updatePayload,
     { returnDocument: 'after' }
-  );
+  )
+    .populate('regionId')
+    .populate('locationTypeId')
+    .populate('ownerId')
+    .populate('feedbacksId');
 
-  if (!updatedLocation)
+  if (!updatedLocation) {
     throw createHttpError(404, `Location with ID ${locationId} not found`);
+  }
 
   res.status(200).json(updatedLocation);
 };
