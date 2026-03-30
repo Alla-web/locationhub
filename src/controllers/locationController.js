@@ -35,10 +35,7 @@ export const getAllLocations = async (req, res) => {
 export const getLocatoinById = async (req, res) => {
   const locationId = req.params.locationId;
 
-  const location = await Location.findOne({
-    _id: locationId,
-    userId: req.user._id,
-  })
+  const location = await Location.findById(locationId)
     .populate('locationTypeId')
     .populate('regionId')
     .populate('ownerId')
@@ -53,22 +50,32 @@ export const getLocatoinById = async (req, res) => {
 export const createLocation = async (req, res) => {
   const newLocation = await Location.create({
     ...req.body,
-    userId: req.user._id,
+    ownerId: req.user._id,
   });
   res.status(201).json(newLocation);
 };
 
 export const updateLocation = async (req, res) => {
-  const locationId = req.params.locationId;
+  const { locationId } = req.params;
 
-  const updatedLocation = await Location.findOneAndUpdate(
-    { _id: locationId, userId: req.user._id },
-    req.body,
-    { returnDocument: 'after' }
-  );
+  const location = await Location.findById(locationId);
 
-  if (!updatedLocation)
+  if (!location) {
     throw createHttpError(404, `Location with ID ${locationId} not found`);
+  }
+
+  if (location.ownerId?.toString() !== req.user._id.toString()) {
+    throw createHttpError(403, 'Forbidden');
+  }
+
+  const updatedLocation = await Location.findByIdAndUpdate(locationId, req.body, {
+    returnDocument: 'after',
+    runValidators: true,
+  })
+    .populate('locationTypeId')
+    .populate('regionId')
+    .populate('ownerId')
+    .populate('feedbacksId');
 
   res.status(200).json(updatedLocation);
 };
