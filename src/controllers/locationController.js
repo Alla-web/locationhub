@@ -18,6 +18,33 @@ export const getAllLocations = async (req, res) => {
 
   const locationQuery = Location.find({ ownerId: req.user._id });
 
+  let sortOption;
+
+  switch (sort) {
+    case 'name-asc':
+      sortOption = { name: 1 };
+      break;
+    case 'name-desc':
+      sortOption = { name: -1 };
+      break;
+    case 'rate-acs':
+      sortOption = { rate: 1 };
+      break;
+    case 'rate-desc':
+      sortOption = { rate: -1 };
+      break;
+    case 'newest':
+      sortOption = { createdAt: 1 };
+      break;
+    case 'oldest':
+      sortOption = { createdAt: -1 };
+      break;
+    default:
+      sortOption = { createdAt: -1 };
+  }
+
+  const noteQuery = Location.find();
+  
   if (search) {
     locationQuery.where({ $text: { $search: search } });
   }
@@ -31,10 +58,13 @@ export const getAllLocations = async (req, res) => {
   }
 
   const [totalLocations, locations] = await Promise.all([
-    locationQuery.clone().countDocuments(),
-    locationQuery
+    noteQuery.clone().countDocuments(),
+    noteQuery
+      .clone()
+      .sort(sortOption)
       .skip(skip)
-      .limit(perPageNumber)
+      .limit(Number(perPage))
+      // .populate('locationType', 'name') - тобто можна окремі поля витягати
       .populate('locationTypeId')
       .populate('regionId')
       .populate('ownerId')
