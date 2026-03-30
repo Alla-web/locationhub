@@ -3,11 +3,18 @@ import createHttpError from 'http-errors';
 import { Location } from '../models/location.js';
 
 export const getAllLocations = async (req, res) => {
-  const { page = 1, perPage = 9, region, locationType, search } = req.query;
+  const {
+    page = 1,
+    perPage = 9,
+    search,
+    region,
+    locationType,
+    sort, //за рейтингом, за датою створення, за алфавітом (регіону чи типу локації),
+  } = req.query;
 
   const skip = (Number(page) - 1) * Number(perPage);
 
-  const noteQuery = Location.find({ ownerId: req.user._id });
+  const noteQuery = Location.find();
 
   if (search) noteQuery.where({ $text: { $search: search } });
   if (region) noteQuery.where('regionId').equals(region);
@@ -35,10 +42,7 @@ export const getAllLocations = async (req, res) => {
 export const getLocatoinById = async (req, res) => {
   const locationId = req.params.locationId;
 
-  const location = await Location.findOne({
-    _id: locationId,
-    userId: req.user._id,
-  })
+  const location = await Location.findById(locationId)
     .populate('locationTypeId')
     .populate('regionId')
     .populate('ownerId')
@@ -53,19 +57,35 @@ export const getLocatoinById = async (req, res) => {
 export const createLocation = async (req, res) => {
   const newLocation = await Location.create({
     ...req.body,
-    userId: req.user._id,
+    ownerId: req.user._id,
   });
   res.status(201).json(newLocation);
 };
 
 export const updateLocation = async (req, res) => {
-  const locationId = req.params.locationId;
+  const { locationId } = req.params;
 
-  const updatedLocation = await Location.findOneAndUpdate(
-    { _id: locationId, userId: req.user._id },
+  const location = await Location.findById(locationId);
+
+  if (!location)
+    throw createHttpError(404, `Location with ID ${locationId} not found`);
+
+  if (location.ownerId?.toString() !== req.user._id.toString()) {
+    throw createHttpError(403, 'Forbidden');
+  }
+
+  const updatedLocation = await Location.findByIdAndUpdate(
+    locationId,
     req.body,
-    { returnDocument: 'after' }
-  );
+    {
+      returnDocument: 'after',
+      runValidators: true,
+    }
+  )
+    .populate('locationTypeId')
+    .populate('regionId')
+    .populate('ownerId')
+    .populate('feedbacksId');
 
   if (!updatedLocation)
     throw createHttpError(404, `Location with ID ${locationId} not found`);
