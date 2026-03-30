@@ -55,12 +55,9 @@ export const getAllLocations = async (req, res) => {
 export const getLocationById = async (req, res) => {
   const { locationId } = req.params;
 
-  const location = await Location.findOne({
-    _id: locationId,
-    ownerId: req.user._id,
-  })
-    .populate('regionId')
+  const location = await Location.findById(locationId)
     .populate('locationTypeId')
+    .populate('regionId')
     .populate('ownerId')
     .populate('feedbacksId');
 
@@ -106,26 +103,27 @@ export const createLocation = async (req, res) => {
 export const updateLocation = async (req, res) => {
   const { locationId } = req.params;
 
-  const updatePayload = { ...req.body };
+  const location = await Location.findById(locationId);
 
-  if (req.file) {
-    const uploadedImage = await uploadImageToCloudinary(req.file.buffer);
-    updatePayload.image = uploadedImage.secure_url;
+  if (!location)
+    throw createHttpError(404, `Location with ID ${locationId} not found`);
+
+  if (location.ownerId?.toString() !== req.user._id.toString()) {
+    throw createHttpError(403, 'Forbidden');
   }
 
-  const updatedLocation = await Location.findOneAndUpdate(
-    { _id: locationId, ownerId: req.user._id },
-    updatePayload,
-    { returnDocument: 'after' }
+  const updatedLocation = await Location.findByIdAndUpdate(
+    locationId,
+    req.body,
+    {
+      returnDocument: 'after',
+      runValidators: true,
+    }
   )
-    .populate('regionId')
     .populate('locationTypeId')
+    .populate('regionId')
     .populate('ownerId')
     .populate('feedbacksId');
-
-  if (!updatedLocation) {
-    throw createHttpError(404, `Location with ID ${locationId} not found`);
-  }
 
   res.status(200).json(updatedLocation);
 };

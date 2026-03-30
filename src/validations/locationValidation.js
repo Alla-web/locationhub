@@ -19,6 +19,12 @@ export const getAllLocationsSchema = {
   }),
 };
 
+const locationIdValidator = (value, helpers) => {
+  return !isValidObjectId(value)
+    ? helpers.error('locationId.invalid')
+    : value;
+};
+
 export const getlocationByIdSchema = {
   [Segments.PARAMS]: Joi.object({
     locationId: Joi.string().required().custom(locationIdValidator).messages({
