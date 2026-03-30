@@ -14,6 +14,31 @@ export const getAllLocations = async (req, res) => {
 
   const skip = (Number(page) - 1) * Number(perPage);
 
+  let sortOption;
+
+  switch (sort) {
+    case 'name-asc':
+      sortOption = { name: 1 };
+      break;
+    case 'name-desc':
+      sortOption = { name: -1 };
+      break;
+    case 'rate-acs':
+      sortOption = { rate: 1 };
+      break;
+    case 'rate-desc':
+      sortOption = { rate: -1 };
+      break;
+    case 'newest':
+      sortOption = { createdAt: 1 };
+      break;
+    case 'oldest':
+      sortOption = { createdAt: -1 };
+      break;
+    default:
+      sortOption = { createdAt: -1 };
+  }
+
   const noteQuery = Location.find();
 
   if (search) noteQuery.where({ $text: { $search: search } });
@@ -23,8 +48,10 @@ export const getAllLocations = async (req, res) => {
   const [totalLocations, locations] = await Promise.all([
     noteQuery.clone().countDocuments(),
     noteQuery
+      .clone()
+      .sort(sortOption)
       .skip(skip)
-      .limit(perPage)
+      .limit(Number(perPage))
       // .populate('locationType', 'name') - тобто можна окремі поля витягати
       .populate('locationTypeId')
       .populate('regionId')
@@ -82,23 +109,6 @@ export const updateLocation = async (req, res) => {
       runValidators: true,
     }
   )
-    .populate('locationTypeId')
-    .populate('regionId')
-    .populate('ownerId')
-    .populate('feedbacksId');
-
-  if (!location) {
-    throw createHttpError(404, `Location with ID ${locationId} not found`);
-  }
-
-  if (location.ownerId?.toString() !== req.user._id.toString()) {
-    throw createHttpError(403, 'Forbidden');
-  }
-
-  const updatedLocation = await Location.findByIdAndUpdate(locationId, req.body, {
-    returnDocument: 'after',
-    runValidators: true,
-  })
     .populate('locationTypeId')
     .populate('regionId')
     .populate('ownerId')
