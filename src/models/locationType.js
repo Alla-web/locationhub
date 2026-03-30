@@ -1,6 +1,6 @@
 import { Schema, model } from 'mongoose';
 
-const locatuonTypeSchema = new Schema({
+const locationTypeSchema = new Schema({
   name: { type: String, unique: true, required: true, trim: true },
   slug: {
     type: String,
@@ -13,6 +13,6 @@ const locatuonTypeSchema = new Schema({
 
 export const LocationType = model(
   'LocationType',
-  locatuonTypeSchema,
-  'locationTypes'
+  locationTypeSchema,
+  'locationtypes'
 );
