@@ -13,7 +13,7 @@ export const getAllLocationsSchema = {
 
 const locationIdValidator = (value, helpers) => {
   return !isValidObjectId(value)
-    ? helpers.console.error('locationId.invalid')
+    ? helpers.error('locationId.invalid')
     : value;
 };
 
@@ -59,7 +59,7 @@ export const createLocationSchema = {
 export const updateLocationSchema = {
   [Segments.PARAMS]: Joi.object({
     locationId: Joi.string().required().custom(locationIdValidator).messages({
-      'noteId.invalid': `Location ID - {#value} - must be valid mongo ID (24 characters in hex-format)`,
+      'locationId.invalid': `Location ID - {#value} - must be valid mongo ID (24 characters in hex-format)`,
     }),
   }),
   [Segments.BODY]: Joi.object({
@@ -85,5 +85,7 @@ export const updateLocationSchema = {
       'string.min': 'Feild description must be at least 10 characters',
       'string.max': 'Field description must be less then 1000 characters',
     }),
-  }).options({ allowUnknown: false }),
+  })
+    .min(1)
+    .options({ allowUnknown: false }),
 };
