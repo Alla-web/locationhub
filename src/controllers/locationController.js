@@ -10,8 +10,8 @@ export const getAllLocations = async (req, res) => {
   const noteQuery = Location.find({ ownerId: req.user._id });
 
   if (search) noteQuery.where({ $text: { $search: search } });
-  if (region) noteQuery.where('region').equals(region);
-  if (locationType) noteQuery.where('locationType').equals(locationType);
+  if (region) noteQuery.where('regionId').equals(region);
+  if (locationType) noteQuery.where('locationTypeId').equals(locationType);
 
   const [totalLocations, locations] = await Promise.all([
     noteQuery.clone().countDocuments(),
