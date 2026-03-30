@@ -8,10 +8,11 @@ import {
   updateLocationSchema,
 } from '../validations/locationValidation.js';
 import { authenticate } from '../middleware/authenticate.js';
+import { upload } from '../middleware/multer.js';
 import {
   createLocation,
   getAllLocations,
-  getLocatoinById,
+  getLocationById,
   updateLocation,
 } from '../controllers/locationController.js';
 
@@ -92,6 +93,7 @@ const locationRoutes = Router();
  */
 locationRoutes.get(
   '/locations',
+  authenticate,
   celebrate(getAllLocationsSchema),
   getAllLocations
 );
@@ -156,8 +158,9 @@ locationRoutes.get(
  */
 locationRoutes.get(
   '/locations/:locationId',
+  authenticate,
   celebrate(getlocationByIdSchema),
-  getLocatoinById
+  getLocationById
 );
 
 /**
@@ -279,6 +282,7 @@ locationRoutes.get(
 locationRoutes.post(
   '/locations',
   authenticate,
+  upload.single('image'),
   celebrate(createLocationSchema),
   createLocation
 );
@@ -390,6 +394,7 @@ locationRoutes.post(
 locationRoutes.patch(
   '/locations/:locationId',
   authenticate,
+  upload.single('image'),
   celebrate(updateLocationSchema),
   updateLocation
 );

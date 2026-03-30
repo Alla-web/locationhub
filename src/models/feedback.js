@@ -1,40 +1,35 @@
-import mongoose, { Schema } from 'mongoose';
+import { Schema, model } from 'mongoose';
+import './user.js';
+import './location.js';
 
-const feedbackSchema = new mongoose.Schema({
-  description: {
-    type: String,
-    required: true,
-    trim: true,
+const feedbackSchema = new Schema(
+  {
+    text: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+    rating: {
+      type: Number,
+      required: true,
+      min: 1,
+      max: 5,
+    },
+    ownerId: {
+      type: Schema.Types.ObjectId,
+      ref: 'User',
+      required: true,
+    },
+    locationId: {
+      type: Schema.Types.ObjectId,
+      ref: 'Location',
+      required: true,
+    },
   },
-  userName: {
-    type: String,
-    required: true,
-    trim: true,
-    minlength: 2,
-    maxlength: 32,
-  },
-  rate: {
-    type: Number,
-    required: true,
-    min: 1,
-    max: 5,
-  },
-  locationId: {
-    type: Schema.Types.ObjectId,
-    required: true,
-    index: true,
-  },
-  userId: {
-    type: Schema.Types.ObjectId,
-    ref: 'User',
-    required: true,
-  },
-},
-{
-  timestamps: true
-}
+  {
+    timestamps: true,
+    versionKey: '_version',
+  }
 );
 
-const Feedback = mongoose.model('Feedback', feedbackSchema);
-
-export default Feedback;
+export const Feedback = model('Feedback', feedbackSchema, 'feedbacks');
