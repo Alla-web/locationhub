@@ -12,7 +12,7 @@ import { upload } from '../middleware/multer.js';
 import {
   createLocation,
   getAllLocations,
-  getLocatoinById,
+  getLocationById,
   updateLocation,
 } from '../controllers/locationController.js';
 
@@ -160,7 +160,7 @@ locationRoutes.get(
   '/locations/:locationId',
   authenticate,
   celebrate(getlocationByIdSchema),
-  getLocatoinById
+  getLocationById
 );
 
 /**

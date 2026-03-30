@@ -1,3 +1,4 @@
+
 import createHttpError from 'http-errors';
 import { Location } from '../models/location.js';
 import { uploadImageToCloudinary } from '../services/uploadImageToCloudinary.js';
@@ -51,7 +52,7 @@ export const getAllLocations = async (req, res) => {
   });
 };
 
-export const getLocatoinById = async (req, res) => {
+export const getLocationById = async (req, res) => {
   const { locationId } = req.params;
 
   const location = await Location.findOne({
@@ -71,7 +72,10 @@ export const getLocatoinById = async (req, res) => {
 };
 
 export const createLocation = async (req, res) => {
+
+
   let imageUrl = req.body.image;
+
 
   if (req.file) {
     const uploadedImage = await uploadImageToCloudinary(req.file.buffer);
@@ -88,11 +92,13 @@ export const createLocation = async (req, res) => {
     ownerId: req.user._id,
   });
 
+
   const populatedLocation = await Location.findById(newLocation._id)
     .populate('regionId')
     .populate('locationTypeId')
     .populate('ownerId')
     .populate('feedbacksId');
+
 
   res.status(201).json(populatedLocation);
 };
