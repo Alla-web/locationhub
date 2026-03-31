@@ -16,13 +16,8 @@ export const getAllLocationsSchema = {
     search: Joi.string().trim().allow(''),
     regionId: Joi.string().hex().length(24),
     locationTypeId: Joi.string().hex().length(24),
+    ownerId: Joi.string().hex().length(24),
   }),
-};
-
-const locationIdValidator = (value, helpers) => {
-  return !isValidObjectId(value)
-    ? helpers.error('locationId.invalid')
-    : value;
 };
 
 export const getlocationByIdSchema = {

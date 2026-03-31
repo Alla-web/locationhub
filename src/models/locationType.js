@@ -14,5 +14,5 @@ const locationTypeSchema = new Schema({
 export const LocationType = model(
   'LocationType',
   locationTypeSchema,
-  'locationtypes'
+  'locationTypes'
 );

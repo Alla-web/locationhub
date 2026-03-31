@@ -1,4 +1,4 @@
-import Feedback from '../models/feedback.js';
+import { Feedback } from '../models/feedback.js';
 
 export const getFeedbacks = async (req, res) => {
   try {
@@ -16,7 +16,7 @@ export const getFeedbacks = async (req, res) => {
         .sort({ createdAt: -1 })
         .skip(skip)
         .limit(perPageNum)
-        .populate("userId", "name email"),
+        .populate('userId', 'name email'),
     ]);
 
     const totalPages = Math.ceil(totalFeedbacks / perPageNum) || 1;
@@ -35,19 +35,21 @@ export const getFeedbacks = async (req, res) => {
 
 export const createFeedback = async (req, res) => {
   try {
-    const { locationId, userName, rate, description } = req.body;
+    const { locationId, rate, text } = req.body;
 
     const newFeedback = await Feedback.create({
       locationId,
-      userName,
       rate,
-      description,
-      userId: req.user._id,
+      text,
+      ownerId: req.user._id,
     });
 
-    const populated = await newFeedback.populate("userId", "name email");
+    const populatedFeedback = await newFeedback.populate([
+      { path: 'locationId' },
+      { path: 'ownerId' },
+    ]);
 
-    res.status(201).json(populated);
+    res.status(201).json(populatedFeedback);
   } catch {
     res.status(500).json({ message: 'Failed to process request' });
   }
