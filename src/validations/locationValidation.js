@@ -16,7 +16,14 @@ export const getAllLocationsSchema = {
     search: Joi.string().trim().allow(''),
     regionId: Joi.string().hex().length(24),
     locationTypeId: Joi.string().hex().length(24),
-    ownerId: Joi.string().hex().length(24),
+    sort: Joi.string().valid(
+      'name-asc',
+      'name-desc',
+      'rate-asc',
+      'rate-desc',
+      'newest',
+      'oldest'
+    ),
   }),
 };
 

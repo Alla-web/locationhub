@@ -27,23 +27,21 @@ export const getAllLocations = async (req, res) => {
     case 'name-desc':
       sortOption = { name: -1 };
       break;
-    case 'rate-acs':
+    case 'rate-asc':
       sortOption = { rate: 1 };
       break;
     case 'rate-desc':
       sortOption = { rate: -1 };
       break;
     case 'newest':
-      sortOption = { createdAt: 1 };
+      sortOption = { createdAt: -1 };
       break;
     case 'oldest':
-      sortOption = { createdAt: -1 };
+      sortOption = { createdAt: 1 };
       break;
     default:
       sortOption = { createdAt: -1 };
   }
-
-  const noteQuery = Location.find();
 
   if (search) {
     locationQuery.where({ $text: { $search: search } });
@@ -58,8 +56,8 @@ export const getAllLocations = async (req, res) => {
   }
 
   const [totalLocations, locations] = await Promise.all([
-    noteQuery.clone().countDocuments(),
-    noteQuery
+    locationQuery.clone().countDocuments(),
+    locationQuery
       .clone()
       .sort(sortOption)
       .skip(skip)

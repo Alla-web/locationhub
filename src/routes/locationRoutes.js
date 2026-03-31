@@ -24,7 +24,45 @@ const locationRoutes = Router();
  *   get:
  *     tags:
  *       - Locations
- *     summary: Отримати всі локації
+ *     summary: Отримати список локацій з фільтрами та пагінацією
+ *     parameters:
+ *       - in: query
+ *         name: page
+ *         required: false
+ *         schema:
+ *           type: integer
+ *           example: 1
+ *       - in: query
+ *         name: perPage
+ *         required: false
+ *         schema:
+ *           type: integer
+ *           example: 9
+ *       - in: query
+ *         name: search
+ *         required: false
+ *         schema:
+ *           type: string
+ *           example: "затока"
+ *       - in: query
+ *         name: regionId
+ *         required: false
+ *         schema:
+ *           type: string
+ *           example: "64f123abc123abc123abc202"
+ *       - in: query
+ *         name: locationTypeId
+ *         required: false
+ *         schema:
+ *           type: string
+ *           example: "64f123abc123abc123abc201"
+ *       - in: query
+ *         name: sort
+ *         required: false
+ *         schema:
+ *           type: string
+ *           enum: [name-asc, name-desc, rate-asc, rate-desc, newest, oldest]
+ *           example: "newest"
  *     responses:
  *       200:
  *         description: OK
@@ -41,10 +79,10 @@ const locationRoutes = Router();
  *                   example: 9
  *                 totalPages:
  *                   type: integer
- *                   example: 3
+ *                   example: 2
  *                 totalLocations:
  *                   type: integer
- *                   example: 20
+ *                   example: 18
  *                 locations:
  *                   type: array
  *                   items:
@@ -55,38 +93,28 @@ const locationRoutes = Router();
  *                 value:
  *                   page: 1
  *                   perPage: 9
- *                   totalPages: 3
- *                   totalLocations: 20
+ *                   totalPages: 2
+ *                   totalLocations: 18
  *                   locations:
  *                     - _id: "64f123abc123abc123abc123"
- *                       image: "https://example.com/location.jpeg"
- *                       name: "Харків"
+ *                       image: "https://images.unsplash.com/photo-1599058917765-a780eda07a3e"
+ *                       name: "Бакотська затока"
  *                       locationType:
  *                         _id: "64f123abc123abc123abc201"
- *                         name: "Історичне місце"
- *                         createdAt: "2025-03-01T10:00:00.000Z"
- *                         updatedAt: "2025-03-01T10:00:00.000Z"
+ *                         name: "Природне місце"
  *                       region:
  *                         _id: "64f123abc123abc123abc202"
- *                         name: "Харківська область"
- *                         createdAt: "2025-03-01T10:00:00.000Z"
- *                         updatedAt: "2025-03-01T10:00:00.000Z"
+ *                         name: "Хмельницька область"
  *                       rate: 5
- *                       description: "Вічний вогонь - пам'ятник воїнам, загиблим під час Другої світової війни"
+ *                       description: "Мальовнича затока з неймовірними краєвидами та спокоєм природи."
  *                       owner:
  *                         _id: "64f123abc123abc123abc203"
  *                         name: "Anna"
  *                         email: "anna@example.com"
- *                         avatar: "https://avatar-123.jpeg"
- *                         createdAt: "2025-03-01T10:00:00.000Z"
- *                         updatedAt: "2025-03-01T10:00:00.000Z"
  *                       feedbacks:
  *                         - _id: "64f123abc123abc123abc204"
- *                           text: "Дуже цікаве місце"
+ *                           text: "Дуже красиве місце"
  *                           rating: 5
- *                           owner: "64f123abc123abc123abc205"
- *                           createdAt: "2025-03-01T10:00:00.000Z"
- *                           updatedAt: "2025-03-01T10:00:00.000Z"
  *                       createdAt: "2025-03-01T10:00:00.000Z"
  *                       updatedAt: "2025-03-01T10:00:00.000Z"
  *                       _version: 0
