@@ -6,9 +6,9 @@ export const getAllLocations = async (req, res) => {
   const {
     page = 1,
     perPage = 9,
+    search,
     regionId,
     locationTypeId,
-    search,
     sort,
   } = req.query;
 

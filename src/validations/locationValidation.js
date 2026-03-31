@@ -5,7 +5,6 @@ const locationIdValidator = (value, helpers) => {
   if (!isValidObjectId(value)) {
     return helpers.error('locationId.invalid');
   }
-
   return value;
 };
 
@@ -13,17 +12,19 @@ export const getAllLocationsSchema = {
   [Segments.QUERY]: Joi.object({
     page: Joi.number().integer().min(1).default(1),
     perPage: Joi.number().integer().min(1).max(27).default(9),
-    search: Joi.string().trim().allow(''),
-    regionId: Joi.string().hex().length(24),
-    locationTypeId: Joi.string().hex().length(24),
-    sort: Joi.string().valid(
-      'name-asc',
-      'name-desc',
-      'rate-asc',
-      'rate-desc',
-      'newest',
-      'oldest'
-    ),
+    search: Joi.string().trim().empty(''),
+    regionId: Joi.string().hex().length(24).empty(''),
+    locationTypeId: Joi.string().hex().length(24).empty(''),
+    sort: Joi.string()
+      .valid(
+        'name-asc',
+        'name-desc',
+        'rate-asc',
+        'rate-desc',
+        'newest',
+        'oldest'
+      )
+      .empty(''),
   }),
 };
 
