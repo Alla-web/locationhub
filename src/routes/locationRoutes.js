@@ -20,7 +20,7 @@ const locationRoutes = Router();
 
 /**
  * @openapi
- * /locations:
+ * /api/locations:
  *   get:
  *     tags:
  *       - Locations
@@ -93,14 +93,13 @@ const locationRoutes = Router();
  */
 locationRoutes.get(
   '/locations',
-  authenticate,
   celebrate(getAllLocationsSchema),
   getAllLocations
 );
 
 /**
  * @openapi
- * /locations/{locationId}:
+ * /api/locations/{locationId}:
  *    get:
  *     tags:
  *      - Locations
@@ -158,14 +157,13 @@ locationRoutes.get(
  */
 locationRoutes.get(
   '/locations/:locationId',
-  authenticate,
   celebrate(getlocationByIdSchema),
   getLocationById
 );
 
 /**
  * @openapi
- * /locations:
+ * /api/locations:
  *   post:
  *     tags:
  *       - Locations
@@ -289,7 +287,7 @@ locationRoutes.post(
 
 /**
  * @openapi
- * /locations/{locationId}:
+ * /api/locations/{locationId}:
  *   patch:
  *     tags:
  *       - Locations

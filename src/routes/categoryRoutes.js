@@ -13,7 +13,7 @@ const categoryRoutes = Router();
 
 /**
  * @openapi
- * /categories/regions:
+ * /api/categories/regions:
  *   get:
  *     tags:
  *       - Categories
@@ -46,7 +46,7 @@ categoryRoutes.get(
 
 /**
  * @openapi
- * /categories/location-types:
+ * /api/categories/location-types:
  *   get:
  *     tags:
  *       - Categories

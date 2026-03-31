@@ -9,7 +9,7 @@ const feedbackSchema = new Schema(
       required: true,
       trim: true,
     },
-    rating: {
+    rate: {
       type: Number,
       required: true,
       min: 1,

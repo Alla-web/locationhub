@@ -1,3 +1,4 @@
+import mongoose from 'mongoose';
 import createHttpError from 'http-errors';
 import { User } from '../models/user.js';
 import { Location } from '../models/location.js';
@@ -33,7 +34,7 @@ export const getUserPlaces = async (req, res) => {
   const limit = parseInt(req.query.limit, 10) || 10;
   const skip = (page - 1) * limit;
 
-  const filter = { ownerId: id };
+  const filter = { ownerId: String(id) };
 
   const [places, totalPlaces] = await Promise.all([
     Location.find(filter).skip(skip).limit(limit).lean(),
