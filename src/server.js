@@ -22,7 +22,13 @@ app.use(
     limit: '100kb',
   })
 );
-app.use(cors());
+app.use(
+  cors({
+    origin: `${process.env.FRONTEND_DOMAIN}`,
+    credentials: true,
+  })
+);
+
 app.use(cookieParser());
 
 app.use(
