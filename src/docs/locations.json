@@ -1,182 +1,346 @@
-[
-  {
-    "image": "https://images.unsplash.com/photo-1599058917765-a780eda07a3e",
-    "name": "Бакотська затока",
-    "locationTypeId": "69c51909a6613043f807c2ac",
-    "regionId": "69c5187fa6613043f807c294",
-    "rate": 5,
-    "description": "Мальовнича затока з неймовірними краєвидами та спокоєм природи.",
-    "ownerId": "64f000000000000000000100",
-    "feedbacksId": []
+[{
+  "_id": {
+    "$oid": "69c6be86a6613043f807c2e1"
   },
-  {
-    "image": "https://upload.wikimedia.org/wikipedia/commons/3/3c/Synevyr_lake.jpg",
-    "name": "Озеро Синевир",
-    "locationTypeId": "69c51909a6613043f807c2a9",
-    "regionId": "69c5187fa6613043f807c285",
-    "rate": 5,
-    "description": "Найбільше озеро Карпат, оточене горами та густими лісами.",
-    "ownerId": "64f000000000000000000100",
-    "feedbacksId": []
+  "image": "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee",
+  "name": "Бакотська затока",
+  "locationTypeId": {
+    "$oid": "69c51909a6613043f807c2ac"
   },
-  {
-    "image": "https://upload.wikimedia.org/wikipedia/commons/6/6f/Hoverla.jpg",
-    "name": "Говерла",
-    "locationTypeId": "69c51909a6613043f807c2ac",
-    "regionId": "69c5187fa6613043f807c287",
-    "rate": 5,
-    "description": "Найвища вершина України, популярна серед туристів.",
-    "ownerId": "64f000000000000000000100",
-    "feedbacksId": []
+  "regionId": {
+    "$oid": "69c5187fa6613043f807c294"
   },
-  {
-    "image": "https://upload.wikimedia.org/wikipedia/commons/5/5f/Odessa_Arcadia.jpg",
-    "name": "Аркадія",
-    "locationTypeId": "69c51909a6613043f807c2a8",
-    "regionId": "69c5187fa6613043f807c28d",
-    "rate": 4,
-    "description": "Популярний пляжний район в Одесі з розвиненою інфраструктурою.",
-    "ownerId": "64f000000000000000000100",
-    "feedbacksId": []
+  "rate": 5,
+  "description": "Мальовнича затока з неймовірними краєвидами та спокоєм природи.",
+  "ownerId": {
+    "$oid": "69cb86695f62579868ae320c"
   },
-  {
-    "image": "https://upload.wikimedia.org/wikipedia/commons/1/1e/Kamianets-Podilskyi_Castle.jpg",
-    "name": "Кам'янець-Подільська фортеця",
-    "locationTypeId": "69c51909a6613043f807c2ab",
-    "regionId": "69c5187fa6613043f807c294",
-    "rate": 5,
-    "description": "Історична фортеця з унікальною архітектурою.",
-    "ownerId": "64f000000000000000000100",
-    "feedbacksId": []
+  "feedbacksId": [
+    {
+      "$oid": "69cb948c5260f29a9ba1c763"
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "69c6be86a6613043f807c2e2"
   },
-  {
-    "image": "https://upload.wikimedia.org/wikipedia/commons/4/4c/Khortytsia.jpg",
-    "name": "Острів Хортиця",
-    "locationTypeId": "69c51909a6613043f807c2a9",
-    "regionId": "69c5187fa6613043f807c286",
-    "rate": 5,
-    "description": "Історичний та природний заповідник на Дніпрі.",
-    "ownerId": "64f000000000000000000100",
-    "feedbacksId": []
+  "image": "https://images.unsplash.com/photo-1501785888041-af3ef285b470",
+  "name": "Озеро Синевир",
+  "locationTypeId": {
+    "$oid": "69c51909a6613043f807c2a9"
   },
-  {
-    "image": "https://upload.wikimedia.org/wikipedia/commons/2/2f/Shatsk_Lakes.jpg",
-    "name": "Шацькі озера",
-    "locationTypeId": "69c51909a6613043f807c2aa",
-    "regionId": "69c5187fa6613043f807c281",
-    "rate": 4,
-    "description": "Комплекс озер з чистою водою та піщаними пляжами.",
-    "ownerId": "64f000000000000000000100",
-    "feedbacksId": []
+  "regionId": {
+    "$oid": "69c5187fa6613043f807c285"
   },
-  {
-    "image": "https://upload.wikimedia.org/wikipedia/commons/9/9e/Sofiyivka_Uman.jpg",
-    "name": "Софіївський парк",
-    "locationTypeId": "69c51909a6613043f807c2ab",
-    "regionId": "69c5187fa6613043f807c295",
-    "rate": 5,
-    "description": "Один із найкрасивіших парків України.",
-    "ownerId": "64f000000000000000000100",
-    "feedbacksId": []
+  "rate": 5,
+  "description": "Найбільше озеро Карпат, оточене горами та густими лісами.",
+  "ownerId": {
+    "$oid": "69cb86695f62579868ae320c"
   },
-  {
-    "image": "https://upload.wikimedia.org/wikipedia/commons/8/8e/Askania-Nova.jpg",
-    "name": "Асканія-Нова",
-    "locationTypeId": "69c51909a6613043f807c2a9",
-    "regionId": "69c5187fa6613043f807c293",
-    "rate": 5,
-    "description": "Біосферний заповідник зі степовою природою.",
-    "ownerId": "64f000000000000000000100",
-    "feedbacksId": []
+  "feedbacksId": []
+},
+{
+  "_id": {
+    "$oid": "69c6be86a6613043f807c2e3"
   },
-  {
-    "image": "https://upload.wikimedia.org/wikipedia/commons/3/3a/Bukovel.jpg",
-    "name": "Буковель",
-    "locationTypeId": "69c51909a6613043f807c2a8",
-    "regionId": "69c5187fa6613043f807c287",
-    "rate": 5,
-    "description": "Найбільший гірськолижний курорт України.",
-    "ownerId": "64f000000000000000000100",
-    "feedbacksId": []
+  "image": "https://images.unsplash.com/photo-1501785888041-af3ef285b470",
+  "name": "Говерла",
+  "locationTypeId": {
+    "$oid": "69c51909a6613043f807c2ac"
   },
-  {
-    "image": "https://upload.wikimedia.org/wikipedia/commons/7/7c/Dniester_Canyon.jpg",
-    "name": "Дністровський каньйон",
-    "locationTypeId": "69c51909a6613043f807c2ac",
-    "regionId": "69c5187fa6613043f807c291",
-    "rate": 5,
-    "description": "Один із найбільших каньйонів Європи.",
-    "ownerId": "64f000000000000000000100",
-    "feedbacksId": []
+  "regionId": {
+    "$oid": "69c5187fa6613043f807c287"
   },
-  {
-    "image": "https://images.unsplash.com/photo-1501785888041-af3ef285b470",
-    "name": "Полтавські пагорби",
-    "locationTypeId": "69c51909a6613043f807c2ac",
-    "regionId": "69c5187fa6613043f807c28e",
-    "rate": 4,
-    "description": "Мальовничі ландшафти з історичним значенням.",
-    "ownerId": "64f000000000000000000100",
-    "feedbacksId": []
+  "rate": 5,
+  "description": "Найвища вершина України, популярна серед туристів.",
+  "ownerId": {
+    "$oid": "69cb86695f62579868ae320c"
   },
-  {
-    "image": "https://upload.wikimedia.org/wikipedia/commons/6/6c/Kaniv_Hills.jpg",
-    "name": "Канівські гори",
-    "locationTypeId": "69c51909a6613043f807c2ac",
-    "regionId": "69c5187fa6613043f807c295",
-    "rate": 4,
-    "description": "Природний парк із чудовими краєвидами.",
-    "ownerId": "64f000000000000000000100",
-    "feedbacksId": []
+  "feedbacksId": []
+},
+{
+  "_id": {
+    "$oid": "69c6be86a6613043f807c2e4"
   },
-  {
-    "image": "https://upload.wikimedia.org/wikipedia/commons/5/5c/Chernivtsi_University.jpg",
-    "name": "Чернівецький університет",
-    "locationTypeId": "69c51909a6613043f807c2ab",
-    "regionId": "69c5187fa6613043f807c296",
-    "rate": 5,
-    "description": "Архітектурна пам'ятка світового значення.",
-    "ownerId": "64f000000000000000000100",
-    "feedbacksId": []
+  "image": "https://images.unsplash.com/photo-1526779259212-939e64788e3c",
+  "name": "Аркадія",
+  "locationTypeId": {
+    "$oid": "69c51909a6613043f807c2a8"
   },
-  {
-    "image": "https://upload.wikimedia.org/wikipedia/commons/5/5a/Crimea_coast.jpg",
-    "name": "Мис Фіолент",
-    "locationTypeId": "69c51909a6613043f807c2a6",
-    "regionId": "69c5187fa6613043f807c298",
-    "rate": 5,
-    "description": "Скелясте узбережжя з вражаючими морськими краєвидами.",
-    "ownerId": "64f000000000000000000100",
-    "feedbacksId": []
+  "regionId": {
+    "$oid": "69c5187fa6613043f807c28d"
   },
-  {
-    "image": "https://upload.wikimedia.org/wikipedia/commons/1/1e/Lviv_market_square.jpg",
-    "name": "Площа Ринок",
-    "locationTypeId": "69c51909a6613043f807c2ab",
-    "regionId": "69c5187fa6613043f807c28b",
-    "rate": 5,
-    "description": "Серце Львова з історичною забудовою.",
-    "ownerId": "64f000000000000000000100",
-    "feedbacksId": []
+  "rate": 4,
+  "description": "Популярний пляжний район в Одесі з розвиненою інфраструктурою.",
+  "ownerId": {
+    "$oid": "69cb86695f62579868ae320c"
   },
-  {
-    "image": "https://upload.wikimedia.org/wikipedia/commons/7/77/Kharkiv_Gorky_Park.jpg",
-    "name": "Парк Горького",
-    "locationTypeId": "69c51909a6613043f807c2a8",
-    "regionId": "69c5187fa6613043f807c292",
-    "rate": 5,
-    "description": "Один із найкращих парків розваг в Україні.",
-    "ownerId": "64f000000000000000000100",
-    "feedbacksId": []
+  "feedbacksId": []
+},
+{
+  "_id": {
+    "$oid": "69c6be86a6613043f807c2e5"
   },
-  {
-    "image": "https://upload.wikimedia.org/wikipedia/commons/4/4c/Mariinsky_Park_Kyiv.jpg",
-    "name": "Маріїнський парк",
-    "locationTypeId": "69c51909a6613043f807c2ab",
-    "regionId": "69c5187fa6613043f807c288",
-    "rate": 5,
-    "description": "Затишний парк у центрі Києва з видом на Дніпро.",
-    "ownerId": "64f000000000000000000100",
-    "feedbacksId": []
-  }
-]
+  "image": "https://images.unsplash.com/photo-1564507592333-c60657eea523",
+  "name": "Кам'янець-Подільська фортеця",
+  "locationTypeId": {
+    "$oid": "69c51909a6613043f807c2ab"
+  },
+  "regionId": {
+    "$oid": "69c5187fa6613043f807c294"
+  },
+  "rate": 5,
+  "description": "Історична фортеця з унікальною архітектурою.",
+  "ownerId": {
+    "$oid": "69cb86695f62579868ae320c"
+  },
+  "feedbacksId": []
+},
+{
+  "_id": {
+    "$oid": "69c6be86a6613043f807c2e6"
+  },
+  "image": "https://images.unsplash.com/photo-1500534314209-a25ddb2bd429",
+  "name": "Острів Хортиця",
+  "locationTypeId": {
+    "$oid": "69c51909a6613043f807c2a9"
+  },
+  "regionId": {
+    "$oid": "69c5187fa6613043f807c286"
+  },
+  "rate": 5,
+  "description": "Історичний та природний заповідник на Дніпрі.",
+  "ownerId": {
+    "$oid": "69cb86695f62579868ae320c"
+  },
+  "feedbacksId": []
+},
+{
+  "_id": {
+    "$oid": "69c6be86a6613043f807c2e7"
+  },
+  "image": "https://images.unsplash.com/photo-1501785888041-af3ef285b470",
+  "name": "Шацькі озера",
+  "locationTypeId": {
+    "$oid": "69c51909a6613043f807c2aa"
+  },
+  "regionId": {
+    "$oid": "69c5187fa6613043f807c281"
+  },
+  "rate": 4,
+  "description": "Комплекс озер з чистою водою та піщаними пляжами.",
+  "ownerId": {
+    "$oid": "69cb86695f62579868ae320c"
+  },
+  "feedbacksId": []
+},
+{
+  "_id": {
+    "$oid": "69c6be86a6613043f807c2e8"
+  },
+  "image": "https://images.unsplash.com/photo-1502082553048-f009c37129b9",
+  "name": "Софіївський парк",
+  "locationTypeId": {
+    "$oid": "69c51909a6613043f807c2ab"
+  },
+  "regionId": {
+    "$oid": "69c5187fa6613043f807c295"
+  },
+  "rate": 5,
+  "description": "Один із найкрасивіших парків України.",
+  "ownerId": {
+    "$oid": "69cb86695f62579868ae320c"
+  },
+  "feedbacksId": []
+},
+{
+  "_id": {
+    "$oid": "69c6be86a6613043f807c2e9"
+  },
+  "image": "https://images.unsplash.com/photo-1501785888041-af3ef285b470",
+  "name": "Асканія-Нова",
+  "locationTypeId": {
+    "$oid": "69c51909a6613043f807c2a9"
+  },
+  "regionId": {
+    "$oid": "69c5187fa6613043f807c293"
+  },
+  "rate": 5,
+  "description": "Біосферний заповідник зі степовою природою.",
+  "ownerId": {
+    "$oid": "69cb86695f62579868ae320c"
+  },
+  "feedbacksId": []
+},
+{
+  "_id": {
+    "$oid": "69c6be86a6613043f807c2ea"
+  },
+  "image": "https://images.unsplash.com/photo-1675099380235-2a1d1c4d6c2a",
+  "name": "Буковель",
+  "locationTypeId": {
+    "$oid": "69c51909a6613043f807c2a8"
+  },
+  "regionId": {
+    "$oid": "69c5187fa6613043f807c287"
+  },
+  "rate": 5,
+  "description": "Найбільший гірськолижний курорт України.",
+  "ownerId": {
+    "$oid": "69cb86695f62579868ae320c"
+  },
+  "feedbacksId": []
+},
+{
+  "_id": {
+    "$oid": "69c6be86a6613043f807c2eb"
+  },
+  "image": "https://images.unsplash.com/photo-1500534314209-a25ddb2bd429",
+  "name": "Дністровський каньйон",
+  "locationTypeId": {
+    "$oid": "69c51909a6613043f807c2ac"
+  },
+  "regionId": {
+    "$oid": "69c5187fa6613043f807c291"
+  },
+  "rate": 5,
+  "description": "Один із найбільших каньйонів Європи.",
+  "ownerId": {
+    "$oid": "69cb86695f62579868ae320c"
+  },
+  "feedbacksId": []
+},
+{
+  "_id": {
+    "$oid": "69c6be86a6613043f807c2ec"
+  },
+  "image": "https://images.unsplash.com/photo-1470770841072-f978cf4d019e",
+  "name": "Полтавські пагорби",
+  "locationTypeId": {
+    "$oid": "69c51909a6613043f807c2ac"
+  },
+  "regionId": {
+    "$oid": "69c5187fa6613043f807c28e"
+  },
+  "rate": 4,
+  "description": "Мальовничі ландшафти з історичним значенням.",
+  "ownerId": {
+    "$oid": "69cb86695f62579868ae320c"
+  },
+  "feedbacksId": []
+},
+{
+  "_id": {
+    "$oid": "69c6be86a6613043f807c2ed"
+  },
+  "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb",
+  "name": "Канівські гори",
+  "locationTypeId": {
+    "$oid": "69c51909a6613043f807c2ac"
+  },
+  "regionId": {
+    "$oid": "69c5187fa6613043f807c295"
+  },
+  "rate": 4,
+  "description": "Природний парк із чудовими краєвидами.",
+  "ownerId": {
+    "$oid": "69cb86695f62579868ae320c"
+  },
+  "feedbacksId": []
+},
+{
+  "_id": {
+    "$oid": "69c6be86a6613043f807c2ee"
+  },
+  "image": "https://images.unsplash.com/photo-1562774053-701939374585",
+  "name": "Чернівецький університет",
+  "locationTypeId": {
+    "$oid": "69c51909a6613043f807c2ab"
+  },
+  "regionId": {
+    "$oid": "69c5187fa6613043f807c296"
+  },
+  "rate": 5,
+  "description": "Архітектурна пам'ятка світового значення.",
+  "ownerId": {
+    "$oid": "69cb86695f62579868ae320c"
+  },
+  "feedbacksId": []
+},
+{
+  "_id": {
+    "$oid": "69c6be86a6613043f807c2ef"
+  },
+  "image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e",
+  "name": "Мис Фіолент",
+  "locationTypeId": {
+    "$oid": "69c51909a6613043f807c2a6"
+  },
+  "regionId": {
+    "$oid": "69c5187fa6613043f807c298"
+  },
+  "rate": 5,
+  "description": "Скелясте узбережжя з вражаючими морськими краєвидами.",
+  "ownerId": {
+    "$oid": "69cb86695f62579868ae320c"
+  },
+  "feedbacksId": []
+},
+{
+  "_id": {
+    "$oid": "69c6be86a6613043f807c2f0"
+  },
+  "image": "https://images.unsplash.com/photo-1528909514045-2fa4ac7a08ba",
+  "name": "Площа Ринок",
+  "locationTypeId": {
+    "$oid": "69c51909a6613043f807c2ab"
+  },
+  "regionId": {
+    "$oid": "69c5187fa6613043f807c28b"
+  },
+  "rate": 5,
+  "description": "Серце Львова з історичною забудовою.",
+  "ownerId": {
+    "$oid": "69cb86695f62579868ae320c"
+  },
+  "feedbacksId": []
+},
+{
+  "_id": {
+    "$oid": "69c6be86a6613043f807c2f1"
+  },
+  "image": "https://images.unsplash.com/photo-1502082553048-f009c37129b9",
+  "name": "Парк Горького",
+  "locationTypeId": {
+    "$oid": "69c51909a6613043f807c2a8"
+  },
+  "regionId": {
+    "$oid": "69c5187fa6613043f807c292"
+  },
+  "rate": 5,
+  "description": "Один із найкращих парків розваг в Україні.",
+  "ownerId": {
+    "$oid": "69cb86695f62579868ae320c"
+  },
+  "feedbacksId": []
+},
+{
+  "_id": {
+    "$oid": "69c6be86a6613043f807c2f2"
+  },
+  "image": "https://images.unsplash.com/photo-1502082553048-f009c37129b9",
+  "name": "Маріїнський парк",
+  "locationTypeId": {
+    "$oid": "69c51909a6613043f807c2ab"
+  },
+  "regionId": {
+    "$oid": "69c5187fa6613043f807c288"
+  },
+  "rate": 5,
+  "description": "Затишний парк у центрі Києва з видом на Дніпро.",
+  "ownerId": {
+    "$oid": "69cb86695f62579868ae320c"
+  },
+  "feedbacksId": []
+}]
