@@ -2,7 +2,6 @@ import createHttpError from 'http-errors';
 
 import { Feedback } from '../models/feedback.js';
 import { Location } from '../models/location.js';
-import { createTestAccount } from 'nodemailer';
 
 export const getFeedbacks = async (req, res) => {
   try {
@@ -20,7 +19,7 @@ export const getFeedbacks = async (req, res) => {
         .sort({ createdAt: -1 })
         .skip(skip)
         .limit(perPageNum)
-        .populate('userId', 'name email'),
+        .populate('ownerId', 'name email'),
     ]);
 
     const totalPages = Math.ceil(totalFeedbacks / perPageNum) || 1;
