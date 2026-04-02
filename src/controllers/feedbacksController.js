@@ -1,4 +1,8 @@
+import createHttpError from 'http-errors';
+
 import { Feedback } from '../models/feedback.js';
+import { Location } from '../models/location.js';
+import { createTestAccount } from 'nodemailer';
 
 export const getFeedbacks = async (req, res) => {
   try {
@@ -34,23 +38,58 @@ export const getFeedbacks = async (req, res) => {
 };
 
 export const createFeedback = async (req, res) => {
-  try {
-    const { locationId, rate, text } = req.body;
+  const { locationId, rate, text } = req.body;
 
-    const newFeedback = await Feedback.create({
-      locationId,
-      rate,
-      text,
-      ownerId: req.user._id,
-    });
+  if (!locationId) throw createHttpError(400, 'LocationId is required');
 
-    const populatedFeedback = await newFeedback.populate([
-      { path: 'locationId' },
-      { path: 'ownerId' },
-    ]);
-
-    res.status(201).json(populatedFeedback);
-  } catch {
-    res.status(500).json({ message: 'Failed to process request' });
+  if (typeof rate !== 'number' || rate < 1 || rate > 5) {
+    throw createHttpError(400, 'Rate must be a number from 1 to 5');
   }
+
+  const existingFeedback = await Feedback.findOne({
+    locationId,
+    ownerId: req.user._id,
+  });
+
+  if (existingFeedback) {
+    throw createHttpError(
+      409,
+      'You have already left feedback for this location'
+    );
+  }
+
+  const ratedLocation = await Location.findById(locationId);
+
+  if (!ratedLocation)
+    throw createHttpError(404, `Location with ID - ${locationId} not found`);
+
+  const feedbacks = await Feedback.find({ locationId }).select('rate');
+
+  const ratingsSum = feedbacks.reduce(
+    (sum, feedback) => sum + feedback.rate,
+    0
+  );
+
+  const currentRating = Number(
+    (ratingsSum + rate) / (feedbacks.length + 1)
+  ).toFixed(1);
+
+  const newFeedback = await Feedback.create({
+    locationId,
+    rate,
+    text,
+    ownerId: req.user._id,
+  });
+
+  await Location.findByIdAndUpdate(locationId, {
+    rate: currentRating,
+    $push: { feedbacksId: newFeedback._id },
+  });
+
+  const populatedFeedback = await newFeedback.populate([
+    { path: 'locationId' },
+    { path: 'ownerId' },
+  ]);
+
+  res.status(201).json(populatedFeedback);
 };
