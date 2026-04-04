@@ -10,7 +10,7 @@ export const getFeedbacksSchema = {
 
 export const createFeedbacksSchema = {
   [Segments.BODY]: Joi.object({
-    locationId: Joi.string().hex().length(24).optional(),
+    locationId: Joi.string().hex().length(24).optional().required(),
     text: Joi.string().trim().min(1).required(),
     rate: Joi.number().min(1).max(5).required(),
   }),
