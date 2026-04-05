@@ -62,7 +62,7 @@ export const getAllLocations = async (req, res) => {
       .sort(sortOption)
       .skip(skip)
       .limit(Number(perPage))
-      // .populate('locationType', 'name') - тобто можна окремі поля витягати
+
       .populate('locationTypeId')
       .populate('regionId')
       .populate('ownerId')
