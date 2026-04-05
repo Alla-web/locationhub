@@ -4,7 +4,7 @@ import './location.js';
 
 const feedbackSchema = new Schema(
   {
-    text: {
+    description: {
       type: String,
       required: true,
       trim: true,
