@@ -1,0 +1,362 @@
+[
+  {
+    "_id": {
+      "$oid": "6881563901add19ee16fcff5"
+    },
+    "name": "Дмитро Романенко",
+    "email": "dmitro@gmail.com",
+    "password": "StrongPassword123",
+    "avatarUrl": "https://ftp.goit.study/img/harmoniq/users/6881563901add19ee16fcff5.webp",
+    "articlesAmount": 13
+  },
+  {
+    "_id": {
+      "$oid": "6881563901add19ee16fd017"
+    },
+    "name": "Матвій Савченко",
+    "email": "matvij@gmail.com",
+    "password": "StrongPassword123",
+    "avatarUrl": "https://ftp.goit.study/img/harmoniq/users/6881563901add19ee16fd017.webp",
+    "articlesAmount": 25
+  },
+  {
+    "_id": {
+      "$oid": "6881563901add19ee16fd009"
+    },
+    "name": "Єва Поліщук",
+    "email": "eva@gmail.com",
+    "password": "StrongPassword123",
+    "avatarUrl": "https://ftp.goit.study/img/harmoniq/users/6881563901add19ee16fd009.webp",
+    "articlesAmount": 11
+  },
+  {
+    "_id": {
+      "$oid": "6881563901add19ee16fd010"
+    },
+    "name": "Назар Романенко",
+    "email": "nazar@gmail.com",
+    "password": "StrongPassword123",
+    "avatarUrl": "https://ftp.goit.study/img/harmoniq/users/6881563901add19ee16fd010.webp",
+    "articlesAmount": 11
+  },
+  {
+    "_id": {
+      "$oid": "6881563901add19ee16fcffc"
+    },
+    "name": "Поліна Романенко",
+    "email": "polona@gmail.com",
+    "password": "StrongPassword123",
+    "avatarUrl": "https://ftp.goit.study/img/harmoniq/users/6881563901add19ee16fcffc.webp",
+    "articlesAmount": 10
+  },
+  {
+    "_id": {
+      "$oid": "6881563901add19ee16fcffb"
+    },
+    "name": "Дарина Ковальчук",
+    "email": "darina@gmail.com",
+    "password": "StrongPassword123",
+    "avatarUrl": "https://ftp.goit.study/img/harmoniq/users/6881563901add19ee16fcffb.webp",
+    "articlesAmount": 10
+  },
+  {
+    "_id": {
+      "$oid": "6881563901add19ee16fd002"
+    },
+    "name": "Олександра Ткаченко",
+    "email": "oleksandra@gmail.com",
+    "password": "StrongPassword123",
+    "avatarUrl": "https://ftp.goit.study/img/harmoniq/users/6881563901add19ee16fd002.webp",
+    "articlesAmount": 3
+  },
+  {
+    "_id": {
+      "$oid": "6881563901add19ee16fd013"
+    },
+    "name": "Поліна Романенко",
+    "email": "paulina@gmail.com",
+    "password": "StrongPassword123",
+    "avatarUrl": "https://ftp.goit.study/img/harmoniq/users/6881563901add19ee16fd013.webp",
+    "articlesAmount": 2
+  },
+  {
+    "_id": {
+      "$oid": "6881563901add19ee16fd00f"
+    },
+    "name": "Дарина Іваненко",
+    "email": "dasha@gmail.com",
+    "password": "StrongPassword123",
+    "avatarUrl": "https://ftp.goit.study/img/harmoniq/users/6881563901add19ee16fd00f.webp",
+    "articlesAmount": 2
+  },
+  {
+    "_id": {
+      "$oid": "6881563901add19ee16fd011"
+    },
+    "name": "Богдан Коваль",
+    "email": "bogdan@gmail.com",
+    "password": "StrongPassword123",
+    "avatarUrl": "https://ftp.goit.study/img/harmoniq/users/6881563901add19ee16fd011.webp",
+    "articlesAmount": 2
+  },
+  {
+    "_id": {
+      "$oid": "6881563901add19ee16fd016"
+    },
+    "name": "Анастасія Бойко",
+    "email": "anastasia@gmail.com",
+    "password": "StrongPassword123",
+    "avatarUrl": "https://ftp.goit.study/img/harmoniq/users/6881563901add19ee16fd016.webp",
+    "articlesAmount": 1
+  },
+  {
+    "_id": {
+      "$oid": "6881563901add19ee16fd00d"
+    },
+    "name": "Олександр Поліщук",
+    "email": "oleksandr@gmail.com",
+    "password": "StrongPassword123",
+    "avatarUrl": "https://ftp.goit.study/img/harmoniq/users/6881563901add19ee16fd00d.webp",
+    "articlesAmount": 0
+  },
+  {
+    "_id": {
+      "$oid": "6881563901add19ee16fcff3"
+    },
+    "name": "Назар Ткаченко",
+    "email": "nazarij@gmail.com",
+    "password": "StrongPassword123",
+    "avatarUrl": "https://ftp.goit.study/img/harmoniq/users/6881563901add19ee16fcff3.webp",
+    "articlesAmount": 0
+  },
+  {
+    "_id": {
+      "$oid": "6881563901add19ee16fd005"
+    },
+    "name": "Катерина Іваненко",
+    "email": "kate@gmail.com",
+    "password": "StrongPassword123",
+    "avatarUrl": "https://ftp.goit.study/img/harmoniq/users/6881563901add19ee16fd005.webp",
+    "articlesAmount": 0
+  },
+  {
+    "_id": {
+      "$oid": "6881563901add19ee16fcff6"
+    },
+    "name": "Олександра Бондаренко",
+    "email": "sasha@gmail.com",
+    "password": "StrongPassword123",
+    "avatarUrl": "https://ftp.goit.study/img/harmoniq/users/6881563901add19ee16fcff6.webp",
+    "articlesAmount": 0
+  },
+  {
+    "_id": {
+      "$oid": "6881563901add19ee16fd00a"
+    },
+    "name": "Андрій Романенко",
+    "email": "andrij@gmail.com",
+    "password": "StrongPassword123",
+    "avatarUrl": "https://ftp.goit.study/img/harmoniq/users/6881563901add19ee16fd00a.webp",
+    "articlesAmount": 0
+  },
+  {
+    "_id": {
+      "$oid": "6881563901add19ee16fd014"
+    },
+    "name": "Андрій Коваленко",
+    "email": "andru@gmail.com",
+    "password": "StrongPassword123",
+    "avatarUrl": "https://ftp.goit.study/img/harmoniq/users/6881563901add19ee16fd014.webp",
+    "articlesAmount": 0
+  },
+  {
+    "_id": {
+      "$oid": "6881563901add19ee16fd018"
+    },
+    "name": "Поліна Поліщук",
+    "email": "polishuk@gmail.com",
+    "password": "StrongPassword123",
+    "avatarUrl": "https://ftp.goit.study/img/harmoniq/users/6881563901add19ee16fd018.webp",
+    "articlesAmount": 0
+  },
+  {
+    "_id": {
+      "$oid": "6881563901add19ee16fd01a"
+    },
+    "name": "Матвій Петренко",
+    "email": "petrenko@gmail.com",
+    "password": "StrongPassword123",
+    "avatarUrl": "https://ftp.goit.study/img/harmoniq/users/6881563901add19ee16fd01a.webp",
+    "articlesAmount": 0
+  },
+  {
+    "_id": {
+      "$oid": "6881563901add19ee16fcff4"
+    },
+    "name": "Єва Бондаренко",
+    "email": "bondarenko@gmail.com",
+    "password": "StrongPassword123",
+    "avatarUrl": "https://ftp.goit.study/img/harmoniq/users/6881563901add19ee16fcff4.webp",
+    "articlesAmount": 0
+  },
+  {
+    "_id": {
+      "$oid": "6881563901add19ee16fd012"
+    },
+    "name": "Матвій Мельник",
+    "email": "melnik@gmail.com",
+    "password": "StrongPassword123",
+    "avatarUrl": "https://ftp.goit.study/img/harmoniq/users/6881563901add19ee16fd012.webp",
+    "articlesAmount": 0
+  },
+  {
+    "_id": {
+      "$oid": "6881563901add19ee16fcff9"
+    },
+    "name": "Владислав Поліщук",
+    "email": "vladislaw@gmail.com",
+    "password": "StrongPassword123",
+    "avatarUrl": "https://ftp.goit.study/img/harmoniq/users/6881563901add19ee16fcff9.webp",
+    "articlesAmount": 0
+  },
+  {
+    "_id": {
+      "$oid": "6881563901add19ee16fd003"
+    },
+    "name": "Дарина Лисенко",
+    "email": "lisenko@gmail.com",
+    "password": "StrongPassword123",
+    "avatarUrl": "https://ftp.goit.study/img/harmoniq/users/6881563901add19ee16fd003.webp",
+    "articlesAmount": 0
+  },
+  {
+    "_id": {
+      "$oid": "6881563901add19ee16fd006"
+    },
+    "name": "Олександр Мельник",
+    "email": "sanka@gmail.com",
+    "password": "StrongPassword123",
+    "avatarUrl": "https://ftp.goit.study/img/harmoniq/users/6881563901add19ee16fd006.webp",
+    "articlesAmount": 0
+  },
+  {
+    "_id": {
+      "$oid": "6881563901add19ee16fd001"
+    },
+    "name": "Максим Гриценко",
+    "email": "maksim@gmail.com",
+    "password": "StrongPassword123",
+    "avatarUrl": "https://ftp.goit.study/img/harmoniq/users/6881563901add19ee16fd001.webp",
+    "articlesAmount": 0
+  },
+  {
+    "_id": {
+      "$oid": "6881563901add19ee16fd004"
+    },
+    "name": "Єва Шевченко",
+    "email": "shewchenko@gmail.com",
+    "password": "StrongPassword123",
+    "avatarUrl": "https://ftp.goit.study/img/harmoniq/users/6881563901add19ee16fd004.webp",
+    "articlesAmount": 0
+  },
+  {
+    "_id": {
+      "$oid": "6881563901add19ee16fd007"
+    },
+    "name": "Єва Коваленко",
+    "email": "kovalenko@gmail.com",
+    "password": "StrongPassword123",
+    "avatarUrl": "https://ftp.goit.study/img/harmoniq/users/6881563901add19ee16fd007.webp",
+    "articlesAmount": 0
+  },
+  {
+    "_id": {
+      "$oid": "6881563901add19ee16fcffa"
+    },
+    "name": "Іван Ковальчук",
+    "email": "ivan@gmail.com",
+    "password": "StrongPassword123",
+    "avatarUrl": "https://ftp.goit.study/img/harmoniq/users/6881563901add19ee16fcffa.webp",
+    "articlesAmount": 0
+  },
+  {
+    "_id": {
+      "$oid": "6881563901add19ee16fd008"
+    },
+    "name": "Максим Іваненко",
+    "email": "ivanenko@gmail.com",
+    "password": "StrongPassword123",
+    "avatarUrl": "https://ftp.goit.study/img/harmoniq/users/6881563901add19ee16fd008.webp",
+    "articlesAmount": 0
+  },
+  {
+    "_id": {
+      "$oid": "6881563901add19ee16fd019"
+    },
+    "name": "Анна Іваненко",
+    "email": "anna@gmail.com",
+    "password": "StrongPassword123",
+    "avatarUrl": "https://ftp.goit.study/img/harmoniq/users/6881563901add19ee16fd019.webp",
+    "articlesAmount": 0
+  },
+  {
+    "_id": {
+      "$oid": "6881563901add19ee16fd00b"
+    },
+    "name": "Дмитро Ткачук",
+    "email": "tkachuk@gmail.com",
+    "password": "StrongPassword123",
+    "avatarUrl": "https://ftp.goit.study/img/harmoniq/users/6881563901add19ee16fd00b.webp",
+    "articlesAmount": 0
+  },
+  {
+    "_id": {
+      "$oid": "6881563901add19ee16fcfff"
+    },
+    "name": "Дарина Шевченко",
+    "email": "dashunja@gmail.com",
+    "password": "StrongPassword123",
+    "avatarUrl": "https://ftp.goit.study/img/harmoniq/users/6881563901add19ee16fcfff.webp",
+    "articlesAmount": 0
+  },
+  {
+    "_id": {
+      "$oid": "6881563901add19ee16fd015"
+    },
+    "name": "Максим Поліщук",
+    "email": "maks@gmail.com",
+    "password": "StrongPassword123",
+    "avatarUrl": "https://ftp.goit.study/img/harmoniq/users/6881563901add19ee16fd015.webp",
+    "articlesAmount": 0
+  },
+  {
+    "_id": {
+      "$oid": "6881563901add19ee16fcff7"
+    },
+    "name": "Олександр Шевчук",
+    "email": "shewchuk@gmail.com",
+    "password": "StrongPassword123",
+    "avatarUrl": "https://ftp.goit.study/img/harmoniq/users/6881563901add19ee16fcff7.webp",
+    "articlesAmount": 0
+  },
+  {
+    "_id": {
+      "$oid": "6881563901add19ee16fd00c"
+    },
+    "name": "Злата Олійник",
+    "email": "zlata@gmail.com",
+    "password": "StrongPassword123",
+    "avatarUrl": "https://ftp.goit.study/img/harmoniq/users/6881563901add19ee16fd00c.webp",
+    "articlesAmount": 0
+  },
+  {
+    "_id": {
+      "$oid": "6881563901add19ee16fcffe"
+    },
+    "name": "Владислав Гриценко",
+    "email": "grizenko@gmail.com",
+    "password": "StrongPassword123",
+    "avatarUrl": "https://ftp.goit.study/img/harmoniq/users/6881563901add19ee16fcffe.webp",
+    "articlesAmount": 0
+  }
+]
