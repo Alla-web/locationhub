@@ -5,6 +5,7 @@ import { Location } from '../models/location.js';
 export const getCategoriesWithRegions = async (req, res) => {
   const usedRegionIds = await Location.distinct('regionId');
 
+  //з фільтрацією тільки використовуваних в локаціях регіонів
   const regions = await Region.find({
     _id: { $in: usedRegionIds },
   })
@@ -15,6 +16,7 @@ export const getCategoriesWithRegions = async (req, res) => {
 };
 
 export const getCategoriesWithLocationTypes = async (req, res) => {
+  //з використанням тільки використовуваних в локаціях типів локацій
   const usedLocationTypeIds = await Location.distinct('locationTypeId');
 
   const locationTypes = await LocationType.find({
