@@ -40,9 +40,6 @@ export const getlocationByIdSchema = {
 
 export const createLocationSchema = {
   [Segments.BODY]: Joi.object({
-    image: Joi.string().uri().optional().messages({
-      'string.uri': 'Image must be a valid URL',
-    }),
     name: Joi.string().min(2).max(100).required().trim().messages({
       'string.base': 'Field name must be a string',
       'string.empty': 'Field name cannot be empty',
@@ -74,7 +71,7 @@ export const createLocationSchema = {
       'string.max': 'Field description must be less than 1000 characters',
       'any.required': 'Field description is required',
     }),
-  }).options({ allowUnknown: false }),
+  }).options({ allowUnknown: true }),
 };
 
 export const updateLocationSchema = {

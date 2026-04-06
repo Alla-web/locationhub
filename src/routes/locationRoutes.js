@@ -8,7 +8,7 @@ import {
   updateLocationSchema,
 } from '../validations/locationValidation.js';
 import { authenticate } from '../middleware/authenticate.js';
-import { upload } from '../middleware/multer.js';
+import { uploadImage } from '../middleware/multer.js';
 import {
   createLocation,
   getAllLocations,
@@ -308,7 +308,7 @@ locationRoutes.get(
 locationRoutes.post(
   '/locations',
   authenticate,
-  upload.single('image'),
+  uploadImage.single('image'),
   celebrate(createLocationSchema),
   createLocation
 );
@@ -420,7 +420,7 @@ locationRoutes.post(
 locationRoutes.patch(
   '/locations/:locationId',
   authenticate,
-  upload.single('image'),
+  uploadImage.single('image'),
   celebrate(updateLocationSchema),
   updateLocation
 );
