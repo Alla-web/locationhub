@@ -18,7 +18,7 @@ const feedbackSchema = new Schema(
     ownerId: {
       type: Schema.Types.ObjectId,
       ref: 'User',
-      required: true,
+      // required: true,
     },
     locationId: {
       type: Schema.Types.ObjectId,
