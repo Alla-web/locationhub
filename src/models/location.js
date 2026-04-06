@@ -16,6 +16,10 @@ const locationSchema = new Schema(
     regionId: { type: Schema.Types.ObjectId, ref: 'Region', required: true },
     rate: { type: Number, default: 0, min: 0, max: 5 },
     description: { type: String, required: true, trim: true },
+    coordinates: {
+      lat: { type: Number, required: true },
+      lon: { type: Number, required: true },
+    },
     ownerId: { type: Schema.Types.ObjectId, ref: 'User' },
     feedbacksId: [{ type: Schema.Types.ObjectId, ref: 'Feedback' }],
   },

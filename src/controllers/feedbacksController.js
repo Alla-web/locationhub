@@ -11,7 +11,7 @@ export const getFeedbacks = async (req, res) => {
     const perPageNum = Number(perPage);
     const skip = (pageNum - 1) * perPageNum;
 
-    const filter = { locationId };
+    const filter = locationId ? { locationId } : {};
 
     const [totalFeedbacks, feedbacks] = await Promise.all([
       Feedback.countDocuments(filter),
@@ -19,7 +19,14 @@ export const getFeedbacks = async (req, res) => {
         .sort({ createdAt: -1 })
         .skip(skip)
         .limit(perPageNum)
-        .populate('ownerId', 'name email'),
+        .populate('ownerId', 'name email')
+        .populate({
+          path: 'locationId',
+          populate: {
+            path: 'locationTypeId',
+            select: 'type',
+          },
+        }),
     ]);
 
     const totalPages = Math.ceil(totalFeedbacks / perPageNum) || 1;
