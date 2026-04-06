@@ -4,7 +4,11 @@ import {
   getCurrentUser,
   getUserById,
   getUserPlaces,
+  updateUserProfile,
 } from '../controllers/userController.js';
+import { updateUserProfileSchema } from '../validations/userValidation.js';
+import { celebrate } from 'celebrate';
+import { uploadUserPofile } from '../middleware/multer.js';
 
 const userRoutes = Router();
 
@@ -54,6 +58,14 @@ const userRoutes = Router();
  *         description: Внутрішня помилка сервера
  */
 userRoutes.get('/users/me', authenticate, getCurrentUser);
+
+userRoutes.patch(
+  '/users/edit',
+  authenticate,
+  uploadUserPofile.single('avatar'),
+  celebrate(updateUserProfileSchema),
+  updateUserProfile
+);
 
 /**
  * @openapi
