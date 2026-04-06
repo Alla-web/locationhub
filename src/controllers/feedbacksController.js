@@ -72,7 +72,6 @@ export const createFeedback = async (req, res) => {
     locationId,
     rate,
     text,
-    ownerId: req.user._id,
   });
 
   await Location.findByIdAndUpdate(locationId, {
@@ -82,7 +81,6 @@ export const createFeedback = async (req, res) => {
 
   const populatedFeedback = await newFeedback.populate([
     { path: 'locationId' },
-    { path: 'ownerId' },
   ]);
 
   res.status(201).json(populatedFeedback);
