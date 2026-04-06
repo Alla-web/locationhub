@@ -8,7 +8,6 @@ import {
   createFeedbacksSchema,
   getFeedbacksSchema,
 } from '../validations/feedbackValidation.js';
-import { authenticate } from '../middleware/authenticate.js';
 
 const router = Router();
 
@@ -174,11 +173,6 @@ router.get('/feedbacks', celebrate(getFeedbacksSchema), getFeedbacks);
  *       500:
  *         description: Внутрішня помилка сервера
  */
-router.post(
-  '/feedbacks',
-  authenticate,
-  celebrate(createFeedbacksSchema),
-  createFeedback
-);
+router.post('/feedbacks', celebrate(createFeedbacksSchema), createFeedback);
 
 export default router;
