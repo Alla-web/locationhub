@@ -52,18 +52,6 @@ export const createFeedback = async (req, res) => {
     throw createHttpError(400, 'Rate must be a number from 1 to 5');
   }
 
-  const existingFeedback = await Feedback.findOne({
-    locationId,
-    ownerId: req.user._id,
-  });
-
-  if (existingFeedback) {
-    throw createHttpError(
-      409,
-      'You have already left feedback for this location'
-    );
-  }
-
   const ratedLocation = await Location.findById(locationId);
 
   if (!ratedLocation)
