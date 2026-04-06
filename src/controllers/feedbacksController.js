@@ -72,6 +72,7 @@ export const createFeedback = async (req, res) => {
     locationId,
     rate,
     description,
+    ownerId: req.user?._id,
   });
 
   await Location.findByIdAndUpdate(locationId, {
