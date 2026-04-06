@@ -1,6 +1,6 @@
 import { Region } from '../models/region.js';
 import { LocationType } from '../models/locationType.js';
-import { Location } from '../models/location.js';
+// import { Location } from '../models/location.js';
 
 export const getCategoriesWithRegions = async (req, res) => {
   // const usedRegionIds = await Location.distinct('regionId');
