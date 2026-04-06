@@ -1,7 +1,7 @@
-import mongoose from 'mongoose';
 import createHttpError from 'http-errors';
 import { User } from '../models/user.js';
 import { Location } from '../models/location.js';
+import { saveFileToCloudinary } from '../utils/cloudinary.js';
 
 export const getCurrentUser = async (req, res) => {
   const userId = req.user.id;
@@ -50,4 +50,42 @@ export const getUserPlaces = async (req, res) => {
       totalPages: Math.ceil(totalPlaces / limit),
     },
   });
+};
+
+export const updateUserProfile = async (req, res) => {
+  const userId = req.user._id || req.user.id;
+
+  const { name } = req.body;
+  const photo = req.file;
+
+  const updateData = {};
+
+  if (name) updateData.name = name;
+
+
+  if (photo) {
+    try {
+      const avatarUrl = await saveFileToCloudinary(photo);
+      updateData.avatarUrl = avatarUrl;
+    } catch (err) {
+      console.log('ПОМИЛКА CLOUDINARY:', err);
+      throw createHttpError(500, 'Cloudinary error');
+    }
+  }
+
+  // Перевірка, чи взагалі щось передали
+  if (Object.keys(updateData).length === 0) {
+    throw createHttpError(400, 'Please provide name or avatar to update');
+  }
+
+  const updatedUser = await User.findByIdAndUpdate(userId, updateData, {
+    new: true,
+    runValidators: true,
+  });
+
+  if (!updatedUser) {
+    throw createHttpError(404, 'User not found');
+  }
+
+  res.status(200).json(updatedUser);
 };
