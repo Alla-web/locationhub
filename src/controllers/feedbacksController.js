@@ -44,7 +44,7 @@ export const getFeedbacks = async (req, res) => {
 };
 
 export const createFeedback = async (req, res) => {
-  const { locationId, rate, text } = req.body;
+  const { locationId, rate, description } = req.body;
 
   if (!locationId) throw createHttpError(400, 'LocationId is required');
 
@@ -71,7 +71,7 @@ export const createFeedback = async (req, res) => {
   const newFeedback = await Feedback.create({
     locationId,
     rate,
-    text,
+    description,
   });
 
   await Location.findByIdAndUpdate(locationId, {
