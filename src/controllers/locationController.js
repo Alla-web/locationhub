@@ -84,6 +84,7 @@ export const getLocationById = async (req, res) => {
   const { locationId } = req.params;
 
   const location = await Location.findById(locationId)
+     // .populate('locationType', 'name') - тобто можна окремі поля витягати
     .populate('locationTypeId')
     .populate('regionId')
     .populate('ownerId')

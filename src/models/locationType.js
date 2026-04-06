@@ -12,8 +12,9 @@ const locationTypeSchema = new Schema({
   shortDescription: { type: String, trim: true, required: true },
 });
 
+
 export const LocationType = model(
   'LocationType',
   locationTypeSchema,
-  'locationTypes'
+  'locationtypes'
 );
