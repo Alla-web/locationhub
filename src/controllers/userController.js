@@ -37,7 +37,11 @@ export const getUserPlaces = async (req, res) => {
   const filter = { ownerId: String(id) };
 
   const [places, totalPlaces] = await Promise.all([
-    Location.find(filter).skip(skip).limit(limit).lean(),
+    Location.find(filter)
+      .populate('locationTypeId')
+      .skip(skip)
+      .limit(limit)
+      .lean(),
     Location.countDocuments(filter),
   ]);
 
