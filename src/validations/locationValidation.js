@@ -112,5 +112,5 @@ export const updateLocationSchema = {
     }),
   })
     .min(1)
-    .options({ allowUnknown: false }),
+    .options({ allowUnknown: true }),
 };
