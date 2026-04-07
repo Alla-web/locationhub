@@ -143,9 +143,20 @@ export const updateLocation = async (req, res) => {
     throw createHttpError(403, 'Forbidden');
   }
 
+  const updateData = { ...req.body };
+
+  if (req.file) {
+    const uploadedImage = await uploadImageToCloudinary(
+      req.file.buffer,
+      'locationhub/locations'
+    );
+
+    updateData.image = uploadedImage.secure_url;
+  }
+
   const updatedLocation = await Location.findByIdAndUpdate(
     locationId,
-    req.body,
+    updateData,
     {
       returnDocument: 'after',
       runValidators: true,
