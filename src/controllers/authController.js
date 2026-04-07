@@ -9,6 +9,13 @@ import handlebars from 'handlebars';
 import path from 'node:path';
 import fs from 'node:fs/promises';
 
+const sessionCookieOptions = {
+  httpOnly: true,
+  secure: true,
+  sameSite: 'none',
+  path: '/',
+};
+
 export const registerUser = async (req, res) => {
   const { name, email, password } = req.body;
 
@@ -61,9 +68,9 @@ export const logoutUser = async (req, res) => {
     await Session.deleteOne({ _id: sessionId });
   }
 
-  res.clearCookie('sessionId');
-  res.clearCookie('accessToken');
-  res.clearCookie('refreshToken');
+  res.clearCookie('sessionId', sessionCookieOptions);
+  res.clearCookie('accessToken', sessionCookieOptions);
+  res.clearCookie('refreshToken', sessionCookieOptions);
 
   res.status(204).send();
 };
