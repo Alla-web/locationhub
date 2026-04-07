@@ -1,7 +1,7 @@
 import createHttpError from 'http-errors';
 import { User } from '../models/user.js';
 import { Location } from '../models/location.js';
-import { saveFileToCloudinary } from '../utils/cloudinary.js';
+import { uploadImageToCloudinary } from '../services/uploadImageToCloudinary.js';
 
 export const getCurrentUser = async (req, res) => {
   const userId = req.user.id;
@@ -62,18 +62,21 @@ export const updateUserProfile = async (req, res) => {
 
   if (name) updateData.name = name;
 
-
   if (photo) {
     try {
-      const avatarUrl = await saveFileToCloudinary(photo);
-      updateData.avatarUrl = avatarUrl;
+      const uploadedImage = await uploadImageToCloudinary(
+        photo.buffer,
+        photo.originalname,
+        'locationhub/avatars'
+      );
+
+      updateData.avatarUrl = uploadedImage.secure_url;
     } catch (err) {
-      console.log('ПОМИЛКА CLOUDINARY:', err);
-      throw createHttpError(500, 'Cloudinary error');
+      console.error('ПОМИЛКА CLOUDINARY:', err);
+      throw createHttpError(500, 'Failed to upload avatar to Cloudinary');
     }
   }
 
-  // Перевірка, чи взагалі щось передали
   if (Object.keys(updateData).length === 0) {
     throw createHttpError(400, 'Please provide name or avatar to update');
   }

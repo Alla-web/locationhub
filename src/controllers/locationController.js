@@ -84,7 +84,7 @@ export const getLocationById = async (req, res) => {
   const { locationId } = req.params;
 
   const location = await Location.findById(locationId)
-     // .populate('locationType', 'name') - тобто можна окремі поля витягати
+    // .populate('locationType', 'name') - тобто можна окремі поля витягати
     .populate('locationTypeId')
     .populate('regionId')
     .populate('ownerId')
@@ -101,11 +101,14 @@ export const createLocation = async (req, res) => {
   let imageUrl = req.body.image;
 
   if (req.file) {
-    const uploadedImage = await uploadImageToCloudinary(req.file.buffer);
+    const uploadedImage = await uploadImageToCloudinary(
+      req.file.buffer,
+      'locationhub/locations'
+    );
     imageUrl = uploadedImage.secure_url;
   }
 
-  if (!imageUrl) {
+  if (!imageUrl && !req.file) {
     throw createHttpError(400, 'Image is required');
   }
 
@@ -113,6 +116,10 @@ export const createLocation = async (req, res) => {
     ...req.body,
     image: imageUrl,
     ownerId: req.user._id,
+    coordinates: {
+      lat: 0,
+      lon: 0,
+    },
   });
 
   const populatedLocation = await Location.findById(newLocation._id)
