@@ -83,9 +83,6 @@ export const updateLocationSchema = {
     }),
   }),
   [Segments.BODY]: Joi.object({
-    image: Joi.string().uri().optional().messages({
-      'string.uri': 'Image must be a valid URL',
-    }),
     name: Joi.string().min(2).max(100).trim().messages({
       'string.base': 'Field name must be a string',
       'string.empty': 'Field name cannot be empty',
