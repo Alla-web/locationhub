@@ -45,6 +45,7 @@ export const getFeedbacks = async (req, res) => {
 
 export const createFeedback = async (req, res) => {
   const { locationId, rate, description } = req.body;
+  const ownerId = req.user._id;
 
   if (!locationId) throw createHttpError(400, 'LocationId is required');
 
@@ -56,6 +57,14 @@ export const createFeedback = async (req, res) => {
 
   if (!ratedLocation)
     throw createHttpError(404, `Location with ID - ${locationId} not found`);
+
+  const existingFeeback = await Feedback.findOne({
+    locationId,
+    ownerId,
+  });
+
+  if (existingFeeback)
+    throw createHttpError(409, 'Ви вже залишали відгук на цю локацію');
 
   const feedbacks = await Feedback.find({ locationId }).select('rate');
 

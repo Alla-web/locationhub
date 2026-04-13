@@ -32,4 +32,6 @@ const feedbackSchema = new Schema(
   }
 );
 
+feedbackSchema.index({ ownerId: 1, locationId: 1 }, { unique: true }); //один юзер може створити лише один відгук
+
 export const Feedback = model('Feedback', feedbackSchema, 'feedbacks');
