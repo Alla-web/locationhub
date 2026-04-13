@@ -8,7 +8,6 @@ import {
   requestResetEmail,
   resetPassword,
 } from '../controllers/authController.js';
-import { authenticate } from '../middleware/authenticate.js';
 import {
   loginUserSchema,
   registerUserSchema,
@@ -179,7 +178,7 @@ authRoutes.post('/auth/login', celebrate(loginUserSchema), loginUser);
  *       500:
  *         description: Внутрішня помилка сервера
  */
-authRoutes.post('/auth/logout', authenticate, logoutUser);
+authRoutes.post('/auth/logout', logoutUser);
 
 /**
  * @openapi
@@ -206,7 +205,7 @@ authRoutes.post('/auth/logout', authenticate, logoutUser);
  *       500:
  *         description: Внутрішня помилка сервера
  */
-authRoutes.post('/auth/refresh', authenticate, refreshUserSession);
+authRoutes.post('/auth/refresh', refreshUserSession);
 
 /**
  * @openapi
